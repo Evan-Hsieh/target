@@ -57,3 +57,5 @@ typings/
 # dotenv environment variables file
 .env
 
+# The IDE files from WebStrom of Jetbrains
+.idea
