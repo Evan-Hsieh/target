@@ -1,16 +1,19 @@
-// Basic parameters
+// Initial Constant basic parameters
 const electron = require('electron')
 const BrowserWindow = electron.BrowserWindow
 const app = electron.app
 const path = require('path')
-
-var projectPath = path.join(__dirname, '/../..')
-var mainWindow = null
-
+const customMenu = require('./menu')
 const debug = /--debug/.test(process.argv[2])
 
+// Initial common parameters
+var mainWindow = null
 //if (process.mas) app.setName('Electron APIs')
 app.setName("Missile Expert System")
+
+// Initial path parameters
+var projectPath = path.join(__dirname, '/../..')
+
 
 // Entrance of executing command
 switch (process.argv[1]) {
@@ -68,14 +71,13 @@ function createWindow () {
     }
 
     mainWindow = new BrowserWindow(windowOptions)
-    //mainWindow.loadURL("https://baidu.com")
     mainWindow.loadURL(path.join("file://", projectPath, '/app/pages/index.html'))
 
     // Launch full screen with DevTools open, usage: npm run debug
     if (debug) {
         mainWindow.webContents.openDevTools()
         mainWindow.maximize()
-        require('devtron').install()
+        //require('devtron').install()
     }
 
     mainWindow.show()
@@ -83,6 +85,10 @@ function createWindow () {
     //   mainWindow.show()
     //})
 
+    // Initial and display Menu
+    customMenu.initMenu()
+
+    // Bind events with windows
     mainWindow.on('closed', function () {
         mainWindow = null
     })
