@@ -7,12 +7,14 @@ const path = require('path')
 var projectPath = path.join(__dirname, '/../..')
 var mainWindow = null
 
+const debug = /--debug/.test(process.argv[2])
+
 //if (process.mas) app.setName('Electron APIs')
 app.setName("Missile Expert System")
 
+// Entrance of executing command
 switch (process.argv[1]) {
     default:
-        console.log('hahah')
         initialize()
 }
 
@@ -68,9 +70,18 @@ function createWindow () {
     mainWindow = new BrowserWindow(windowOptions)
     //mainWindow.loadURL("https://baidu.com")
     mainWindow.loadURL(path.join("file://", projectPath, '/app/pages/index.html'))
-    //mainWindow.show()
-    //mainWindow.once('ready-to-show', () => {mainWindow.show()})
 
+    // Launch full screen with DevTools open, usage: npm run debug
+    if (debug) {
+        mainWindow.webContents.openDevTools()
+        mainWindow.maximize()
+        require('devtron').install()
+    }
+
+    mainWindow.show()
+    //mainWindow.once('ready-to-show', () => {
+    //   mainWindow.show()
+    //})
 
     mainWindow.on('closed', function () {
         mainWindow = null

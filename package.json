@@ -7,7 +7,7 @@
   "main": "src/main/main.js",
   "scripts": {
     "start": "electron .",
-    "dev": "electron . --debug",
+    "dev": "electron . --debug --disable-http-cache",
     "test": "mocha && standard",
     "package": "npm-run-all package:*",
     "package:mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --out=out --icon=assets/app-icon/mac/app.icns --osx-sign.identity='Developer ID Application: GitHub' --extend-info=assets/mac/info.plist",
@@ -23,6 +23,7 @@
   "author": "Evan Xie",
   "license": "MIT",
   "devDependencies": {
+    "devtron": "^1.4.0",
     "electron": "~1.7.2",
     "electron-packager": "^8.6.0",
     "electron-winstaller": "^2.2.0",
