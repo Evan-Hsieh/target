@@ -3,22 +3,22 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="import" href="set-body-para-template.html">
+    <link rel="import" href="set-wing-para-template.html">
+
 </head>
 <body>
+<nav><button id="test_button">test</button></nav>
 
-  123123
+  <div class = "content">
+  </div>
 
 
-  <!--
+
   <script>
-    require('./assets/imports')
-    require('./assets/ex-links')
-    require('./assets/nav')
-    require('./assets/demo-btns')
-    require('./assets/code-blocks')
-    require('./assets/normalize-shortcuts')
+    const importTool = require('../../src/shared/imports')
+    importTool.importTemplate('.content-template', '.content')
+    require('../../src/renderer/input-para/nav')
   </script>
-  -->
-
 </body>
 </html>

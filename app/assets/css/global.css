@@ -1,3 +1,12 @@
 body{
     background: blueviolet;
 }
+
+.content{
+    visibility: hidden;
+
+}
+.content.is-shown {
+    visibility: visible;
+
+}
