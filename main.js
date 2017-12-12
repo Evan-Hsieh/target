@@ -103,6 +103,5 @@ switch (process.argv[1]) {
     app.quit()
     break
   default:
-    console.log('hahah')
     initialize()
 }
