@@ -22,3 +22,10 @@
 .u-category-communication { --color-accent: hsl(285, 47%, 46%); }
 .u-category-system        { --color-accent: hsl(330, 65%, 48%); }
 .u-category-media      { --color-accent: hsl( 36, 77%, 34%); }
+
+.u-category-green      { --color-accent: hsl(116, 30%, 36%); }
+.u-category-light-blue         { --color-accent: hsl(194, 60%, 36%); }
+.u-category-dark-blue     { --color-accent: hsl(222, 53%, 50%); }
+.u-category-purple { --color-accent: hsl(285, 47%, 46%); }
+.u-category-red        { --color-accent: hsl(330, 65%, 48%); }
+.u-category-brown     { --color-accent: hsl( 36, 77%, 34%); }
