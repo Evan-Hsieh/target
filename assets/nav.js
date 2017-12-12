@@ -27,8 +27,9 @@ function handleSectionTrigger (event) {
   settings.set('activeSectionButtonId', buttonId)
 }
 
+// Default section that will be open
 function activateDefaultSection () {
-  document.getElementById('button-set-para').click()
+  document.getElementById('button-set-body-para').click()
 }
 
 function showMainContent () {
