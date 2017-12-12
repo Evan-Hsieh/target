@@ -73,7 +73,7 @@ function zipAssets () {
     name: 'electron-api-demos-mac.zip',
     path: path.join(outPath, 'Electron API Demos-darwin-x64', 'Electron API Demos.app')
   }, {
-    name: 'electron-api-demos-windows.zip',
+    name: 'electron-api-demos-set-para.zip',
     path: path.join(outPath, 'ElectronAPIDemos-win32-ia32')
   }, {
     name: 'electron-api-demos-linux.zip',
@@ -83,13 +83,13 @@ function zipAssets () {
   return Promise.all(zipAssets.map(zipAsset)).then((zipAssets) => {
     return zipAssets.concat([{
       name: 'RELEASES',
-      path: path.join(outPath, 'windows-installer', 'RELEASES')
+      path: path.join(outPath, 'set-para-installer', 'RELEASES')
     }, {
       name: 'ElectronAPIDemosSetup.exe',
-      path: path.join(outPath, 'windows-installer', 'ElectronAPIDemosSetup.exe')
+      path: path.join(outPath, 'set-para-installer', 'ElectronAPIDemosSetup.exe')
     }, {
       name: `ElectronAPIDemos-${version}-full.nupkg`,
-      path: path.join(outPath, 'windows-installer', `ElectronAPIDemos-${version}-full.nupkg`)
+      path: path.join(outPath, 'set-para-installer', `ElectronAPIDemos-${version}-full.nupkg`)
     }])
   })
 }

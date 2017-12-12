@@ -55,7 +55,7 @@
             <p>在这个示例中, 我们创建一个新窗口, 并监听 <code>move</code> 和 <code>resize</code> 事件. 点击示例按钮, 并更改新窗口大小和位置, 然后在上方查看输出的大小和位置信息.</p>
           <p>有很多方法用于控制窗口的状态, 如大小, 位置和焦点状态以及监听窗口更改的事件. 完整的列表请查看 <a href="https://github.com/electron/electron/blob/master/docs-translations/zh-CN/api/browser-window.md">文档<span class="u-visible-to-screen-reader">(在新窗口中打开)</span></a>.</p>
           <h5>渲染器进程</h5>
-          <pre><code data-path="renderer-process/windows/manage-window.js"></code></pre>
+
         </div>
       </div>
     </div>
@@ -72,7 +72,6 @@
           </div>
           <p>在这个示例中, 我们创建一个新窗体并监听它的 <code>blur</code> 事件. 点击示例按钮创建一个新的模态窗体, 然后点击父级窗体来切换焦点. 你可以通过点击 <i>示例获取焦点</i> 按钮来让示例窗体再次获得焦点.</p>
           <h5>渲染器进程</h5>
-          <pre><code data-path="renderer-process/windows/using-window-events.js"></code></pre>
         </div>
       </div>
     </div>
@@ -91,7 +90,6 @@
           </p>
 
           <h5>渲染器进程</h5>
-          <pre><code data-path="renderer-process/windows/frameless-window.js"></code></pre>
 
           <p>窗体也可以有一个透明的背景. 通过设置 <code>transparent</code> 参数为 <code>true</code>, 你也可以让你的无框窗口透明:</p>
           <pre>
@@ -109,10 +107,7 @@
     </div>
 
     <script type="text/javascript">
-      require('./renderer-process/windows/create-window')
-      require('./renderer-process/windows/manage-window')
-      require('./renderer-process/windows/using-window-events')
-      require('./renderer-process/windows/frameless-window')
+      //require('../../renderer-process/windows/create-window')
     </script>
 
   </section>

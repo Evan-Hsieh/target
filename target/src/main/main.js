@@ -88,7 +88,7 @@ function createWindow () {
     // Initial and display Menu
     customMenu.initMenu()
 
-    // Bind events with windows
+    // Bind events with set-para
     mainWindow.on('closed', function () {
         mainWindow = null
     })

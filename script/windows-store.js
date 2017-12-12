@@ -3,12 +3,12 @@ const path = require('path')
 
 const metadata = require('../package')
 
-const command = path.join(__dirname, '..', 'node_modules', '.bin', 'electron-windows-store.cmd')
+const command = path.join(__dirname, '..', 'node_modules', '.bin', 'electron-set-para-store.cmd')
 const args = [
   '--input-directory',
   path.join(__dirname, '..', 'out', 'ElectronAPIDemos-win32-ia32'),
   '--output-directory',
-  path.join(__dirname, '..', 'out', 'windows-store'),
+  path.join(__dirname, '..', 'out', 'set-para-store'),
   '--flatten',
   true,
   '--package-version',

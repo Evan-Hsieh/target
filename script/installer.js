@@ -22,7 +22,7 @@ function getInstallerConfig () {
     iconUrl: 'https://raw.githubusercontent.com/electron/electron-api-demos/master/assets/app-icon/win/app.ico',
     loadingGif: path.join(rootPath, 'assets', 'img', 'loading.gif'),
     noMsi: true,
-    outputDirectory: path.join(outPath, 'windows-installer'),
+    outputDirectory: path.join(outPath, 'set-para-installer'),
     setupExe: 'ElectronAPIDemosSetup.exe',
     setupIcon: path.join(rootPath, 'assets', 'app-icon', 'win', 'app.ico'),
     skipUpdateIcon: true
@@ -31,7 +31,7 @@ function getInstallerConfig () {
 
 function deleteOutputFolder () {
   return new Promise((resolve, reject) => {
-    rimraf(path.join(__dirname, '..', 'out', 'windows-installer'), (error) => {
+    rimraf(path.join(__dirname, '..', 'out', 'set-para-installer'), (error) => {
       error ? reject(error) : resolve()
     })
   })
