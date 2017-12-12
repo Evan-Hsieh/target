@@ -14,6 +14,8 @@ function handleSectionTrigger (event) {
   hideAllSectionsAndDeselectButtons()
 
   // Highlight clicked button and show view
+    // When click the item of aside navigator,
+    // the 'is-selected' will be added in the class of tag
   event.target.classList.add('is-selected')
 
   // Display the current section
