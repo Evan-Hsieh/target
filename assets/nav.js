@@ -1,5 +1,22 @@
+const electron = require('electron')
 const settings = require('electron-settings')
 
+
+
+// Callback methods *************
+electron.ipcRenderer.on('click-menu-item', function(event, message){
+  //console.log(message)  // Prints 'whoooooooh!'
+  switch(message){
+    case 'check-para':
+      document.getElementById('button-check-para').click()
+      break
+    default:
+      break
+  }
+  //document.getElementById("tempDiv").innerHTML = "hello"
+})
+
+// Listeners of document elements **************
 document.body.addEventListener('click', function (event) {
   if (event.target.dataset.section) {
     handleSectionTrigger(event)
@@ -9,6 +26,15 @@ document.body.addEventListener('click', function (event) {
     hideAllModals()
   }
 })
+
+// Functions *********************
+
+function clickNavButton(buttonID){
+  let navButton = document.getElementById(buttonID)
+  if (navButton) navButton.click()
+}
+
+
 
 function handleSectionTrigger (event) {
   hideAllSectionsAndDeselectButtons()
@@ -63,18 +89,21 @@ function hideAllSectionsAndDeselectButtons () {
   })
 }
 
+// about
 function displayAbout () {
   document.querySelector('#about-modal').classList.add('is-shown')
 }
 
+
+// Script Sentences **********
 // Default to the view that was active the last time the app was open
-const sectionId = settings.get('activeSectionButtonId')
-if (sectionId) {
+const buttonClicked = settings.get('activeSectionButtonId')
+if (buttonClicked) {
   showMainContent()
-  const section = document.getElementById(sectionId)
-  if (section) section.click()
+  clickNavButton(buttonClicked)
 } else {
   activateDefaultSection()
-    //display about.html
+  //display about.html
   displayAbout()
 }
+

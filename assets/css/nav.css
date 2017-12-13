@@ -58,7 +58,8 @@
 .nav-category {
   margin: .2em 0;
   padding-left: 2rem;
-  font-size: 11px;
+  padding-top: .8rem;
+  font-size: 13px;
   font-weight: normal;
   text-transform: uppercase;
 }

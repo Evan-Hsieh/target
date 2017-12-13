@@ -9,9 +9,18 @@ const app = electron.app
 const debug = /--debug/.test(process.argv[2])
 const basePath = path.join('file://', __dirname)
 
+const windowManager = require('./src/shared/window-manager')
 if (process.mas) app.setName('Electron APIs')
 
 let mainWindow = null
+
+
+let windowOptions = {
+  width: 1080,
+  minWidth: 680,
+  height: 840,
+  title: app.getName()
+}
 
 function initialize() {
   let shouldQuit = makeSingleInstance()
@@ -19,35 +28,10 @@ function initialize() {
 
   loadDemos()
 
-  function createWindow() {
-    let windowOptions = {
-      width: 1080,
-      minWidth: 680,
-      height: 840,
-      title: app.getName()
-    }
-
-    if (process.platform === 'linux') {
-      windowOptions.icon = path.join(__dirname, '/assets/app-icon/png/512.png')
-    }
-
-    mainWindow = new BrowserWindow(windowOptions)
-    mainWindow.loadURL(path.join(basePath, '/sections/para-page/para-page.html'))
-
-    // Launch fullscreen with DevTools open, usage: npm run debug
-    if (debug) {
-      mainWindow.webContents.openDevTools()
-      mainWindow.maximize()
-      require('devtron').install()
-    }
-
-    mainWindow.on('closed', function () {
-      mainWindow = null
-    })
-  }
-
   app.on('ready', function () {
-    createWindow()
+    console.log('main')
+    windowManager.createWindow('ParametersWindow',windowOptions,path.join(basePath,'/sections/para-page/para-page.html'),debug)
+
     autoUpdater.initialize()
   })
 
@@ -59,7 +43,7 @@ function initialize() {
 
   app.on('activate', function () {
     if (mainWindow === null) {
-      createWindow()
+      windowManager.createWindow('ParameterWindow',windowOptions,path.join(basePath,'/sections/para-page/para-page.html'),debug)
     }
   })
 }
@@ -109,5 +93,6 @@ switch (process.argv[1]) {
     break
   default:
     console.log('target/main.js')
+    console.log('process id is ' + process.pid)
     initialize()
 }
