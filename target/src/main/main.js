@@ -18,6 +18,7 @@ var projectPath = path.join(__dirname, '/../..')
 // Entrance of executing command
 switch (process.argv[1]) {
     default:
+        console.log('target/target/src/main.js')
         initialize()
 }
 
@@ -71,7 +72,7 @@ function createWindow () {
     }
 
     mainWindow = new BrowserWindow(windowOptions)
-    mainWindow.loadURL(path.join("file://", projectPath, '/app/pages/index.html'))
+    mainWindow.loadURL(path.join("file://", projectPath, '/app/pages/para-page.html'))
 
     // Launch full screen with DevTools open, usage: npm run debug
     if (debug) {
@@ -88,7 +89,7 @@ function createWindow () {
     // Initial and display Menu
     customMenu.initMenu()
 
-    // Bind events with set-para
+    // Bind events with para-page
     mainWindow.on('closed', function () {
         mainWindow = null
     })

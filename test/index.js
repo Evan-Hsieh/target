@@ -143,12 +143,12 @@ describe('demo app', function () {
   describe('when clicking on a section from the nav bar', function () {
     it('it shows the selected section in the main area', function () {
       return app.client.dismissAboutPage()
-        .selectSection('set-para')
-        .isExisting('button.is-selected[data-section="set-para"]').should.eventually.be.true
+        .selectSection('para-page')
+        .isExisting('button.is-selected[data-section="para-page"]').should.eventually.be.true
         .isVisible('#pdf-section').should.eventually.be.false
         .selectSection('pdf')
-        .isVisible('#set-para-section').should.eventually.be.false
-        .isExisting('button.is-selected[data-section="set-para"]').should.eventually.be.false
+        .isVisible('#para-page-section').should.eventually.be.false
+        .isExisting('button.is-selected[data-section="para-page"]').should.eventually.be.false
         .isExisting('button.is-selected[data-section="pdf"]').should.eventually.be.true
     })
   })
@@ -160,7 +160,7 @@ describe('demo app', function () {
 
       return app.client.dismissAboutPage()
         .collapseDemos()
-        .selectSection('set-para')
+        .selectSection('para-page')
         .click('.js-container-target')
         .waitForVisible('.demo-box')
         .isVisible('.demo-box').should.eventually.deep.equal(onlyFirstVisible)
@@ -172,11 +172,11 @@ describe('demo app', function () {
       let onlyFirstVisible = Array(30).fill(false)
       onlyFirstVisible[0] = true
 
-      return app.client.waitForVisible('#set-para-section')
+      return app.client.waitForVisible('#para-page-section')
         .then(restartApp)
         .then(function () {
-          return app.client.waitForVisible('#set-para-section')
-            .isVisible('#set-para-section').should.eventually.be.true
+          return app.client.waitForVisible('#para-page-section')
+            .isVisible('#para-page-section').should.eventually.be.true
             .isVisible('.demo-box').should.eventually.deep.equal(onlyFirstVisible)
         })
     })
@@ -184,7 +184,7 @@ describe('demo app', function () {
 
   it('does not contain any accessibility warnings or errors', function () {
     return app.client.dismissAboutPage()
-      .auditSectionAccessibility('set-para')
+      .auditSectionAccessibility('para-page')
       .auditSectionAccessibility('crash-hang')
       .auditSectionAccessibility('menus')
       .auditSectionAccessibility('shortcuts')
