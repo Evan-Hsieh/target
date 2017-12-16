@@ -86,15 +86,21 @@ let template = [{
     label: '输入参数',
     click: function () {
       console.log("Log: application-menu.js: click nav button of setting parameter")
-      console.log('menu process id is ' + process.pid)
+      let parameterWindow = windowManager.getWindow('ParametersWindow')
+      if(parameterWindow === null){
+        parameterWindow = windowManager.createWindow('ParametersWindow')
+      }
+      parameterWindow.webContents.send('click-menu-item', 'set-para')
     }
   }, {
     label: '查看参数',
     click: function () {
       console.log("Log: application-menu.js: click nav button of checking parameter")
       let parameterWindow = windowManager.getWindow('ParametersWindow')
-      parameterWindow.webContents.send('click-menu-item','check-para')
-
+      if(parameterWindow === null){
+        parameterWindow = windowManager.createWindow('ParametersWindow')
+      }
+      parameterWindow.webContents.send('click-menu-item', 'check-para')
     }
   }]
 }, {

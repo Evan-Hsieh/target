@@ -2,25 +2,14 @@ const path = require('path')
 const glob = require('glob')
 const electron = require('electron')
 const autoUpdater = require('./auto-updater')
-
-const BrowserWindow = electron.BrowserWindow
+const windowManager = require('./src/shared/window-manager')
 const app = electron.app
-
-const debug = /--debug/.test(process.argv[2])
 const basePath = path.join('file://', __dirname)
 
-const windowManager = require('./src/shared/window-manager')
 if (process.mas) app.setName('Electron APIs')
 
 let mainWindow = null
 
-
-let windowOptions = {
-  width: 1080,
-  minWidth: 680,
-  height: 840,
-  title: app.getName()
-}
 
 function initialize() {
   let shouldQuit = makeSingleInstance()
@@ -30,8 +19,8 @@ function initialize() {
 
   app.on('ready', function () {
     console.log('main')
-    windowManager.createWindow('ParametersWindow',windowOptions,path.join(basePath,'/sections/para-page/para-page.html'),debug)
-
+    windowManager.createWindow('ParametersWindow')
+    mainWindow = windowManager.getWindow('ParametersWindow')
     autoUpdater.initialize()
   })
 
@@ -43,7 +32,8 @@ function initialize() {
 
   app.on('activate', function () {
     if (mainWindow === null) {
-      windowManager.createWindow('ParameterWindow',windowOptions,path.join(basePath,'/sections/para-page/para-page.html'),debug)
+      windowManager.createWindow('ParametersWindow')
+      mainWindow = windowManager.getWindow('ParametersWindow')
     }
   })
 }

@@ -7,6 +7,9 @@ const settings = require('electron-settings')
 electron.ipcRenderer.on('click-menu-item', function(event, message){
   //console.log(message)  // Prints 'whoooooooh!'
   switch(message){
+    case 'set-para':
+      document.getElementById('button-set-body-para').click()
+      break
     case 'check-para':
       document.getElementById('button-check-para').click()
       break
