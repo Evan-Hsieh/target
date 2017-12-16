@@ -3,7 +3,7 @@ const BrowserWindow = electron.BrowserWindow
 const Menu = electron.Menu
 const app = electron.app
 
-const windowManager = require('../../src/shared/window-manager')
+const windowManager = require('../../shared/window-manager')
 
 
 
