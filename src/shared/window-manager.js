@@ -61,15 +61,15 @@ function setWindowInfo(windowName){
   switch(windowName){
     case 'ParametersWindow':
       windowOptions = defaultWindowOptions
-      windowUrl = path.join(BASE_PATH,'/sections/para-page/para-page.html')
+      windowUrl = path.join(BASE_PATH,'/pages/para-page/para-page.html')
       break
     case 'CalculationWindow':
       windowOptions = defaultWindowOptions
-      windowUrl = path.join(BASE_PATH,'/sections/calculation-page/calculation-page.html')
+      windowUrl = path.join(BASE_PATH,'/pages/calculation-page/calculation-page.html')
       break
     default:
       windowOptions = defaultWindowOptions
-      windowUrl = path.join(BASE_PATH,'/sections/para-page/para-page.html')
+      windowUrl = path.join(BASE_PATH,'/pages/para-page/para-page.html')
       debug = false
       break
   }
