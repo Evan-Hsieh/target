@@ -4,13 +4,10 @@ const electron = require('electron')
 const autoUpdater = require('./auto-updater')
 const windowManager = require('./src/shared/window-manager')
 const app = electron.app
-const basePath = path.join('file://', __dirname)
 
 if (process.mas) app.setName('Electron APIs')
 
 let mainWindow = null
-
-
 
 function initialize() {
   let shouldQuit = makeSingleInstance()
