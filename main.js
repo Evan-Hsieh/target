@@ -11,6 +11,7 @@ if (process.mas) app.setName('Electron APIs')
 let mainWindow = null
 
 
+
 function initialize() {
   let shouldQuit = makeSingleInstance()
   if (shouldQuit) return app.quit()
@@ -19,8 +20,8 @@ function initialize() {
 
   app.on('ready', function () {
     console.log('main')
-    windowManager.createWindow('ParametersWindow')
-    mainWindow = windowManager.getWindow('ParametersWindow')
+    mainWindow = windowManager.createWindow('ParametersWindow')
+    windowManager.setMainWindow('ParametersWindow')
     autoUpdater.initialize()
   })
 

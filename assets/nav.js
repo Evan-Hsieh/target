@@ -1,11 +1,14 @@
 const electron = require('electron')
 const settings = require('electron-settings')
-
+const defaultClickButtonIdList = [
+  'button-set-body-para',
+  'button-calc-model'
+]
 
 
 // Callback methods *************
 electron.ipcRenderer.on('click-menu-item', function(event, message){
-  //console.log(message)  // Prints 'whoooooooh!'
+  console.log('receive message : ' + message )
   switch(message){
     case 'set-para':
       document.getElementById('button-set-body-para').click()
@@ -40,7 +43,18 @@ document.body.addEventListener('click', function (event) {
 
 function clickNavButton(buttonID){
   let navButton = document.getElementById(buttonID)
-  if (navButton) navButton.click()
+  if (navButton){
+    navButton.click()
+  }else{
+    for(let alternativeButtonId of defaultClickButtonIdList){
+      let alternativeButton = document.getElementById(alternativeButtonId)
+      if(alternativeButton){
+        alternativeButton.click()
+        break
+      }
+    }
+  }
+
 }
 
 
@@ -103,8 +117,11 @@ function displayAbout () {
   document.querySelector('#about-modal').classList.add('is-shown')
 }
 
-
-// Script Sentences **********
+// ********************
+// Script Sentences:
+// These scripts will be executed
+// when every html page use <script> to load this js file
+// ********************
 // Default to the view that was active the last time the app was open
 const buttonClicked = settings.get('activeSectionButtonId')
 if (buttonClicked) {

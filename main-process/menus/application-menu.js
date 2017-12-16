@@ -88,7 +88,7 @@ let template = [{
       console.log("Log: application-menu.js: click nav button of setting parameter")
       let parameterWindow = windowManager.getWindow('ParametersWindow')
       if(parameterWindow === null){
-        parameterWindow = windowManager.createWindow('ParametersWindow')
+        parameterWindow = windowManager.createWindow('ParametersWindow', true)
       }
       parameterWindow.webContents.send('click-menu-item', 'set-para')
     }
@@ -98,7 +98,7 @@ let template = [{
       console.log("Log: application-menu.js: click nav button of checking parameter")
       let parameterWindow = windowManager.getWindow('ParametersWindow')
       if(parameterWindow === null){
-        parameterWindow = windowManager.createWindow('ParametersWindow')
+        parameterWindow = windowManager.createWindow('ParametersWindow', true)
       }
       parameterWindow.webContents.send('click-menu-item', 'check-para')
     }
@@ -111,9 +111,9 @@ let template = [{
       console.log("模型计算")
       let calculationWindow = windowManager.getWindow('CalculationWindow')
       if(calculationWindow === null){
-        calculationWindow = windowManager.createWindow('CalculationWindow')
+        calculationWindow = windowManager.createWindow('CalculationWindow', true)
       }
-      //calculationWindow.webContents.send('click-menu-item', 'calc-model')
+      calculationWindow.webContents.send('click-menu-item', 'calc-model')
     }
   }, {
     label: '绘制图形',
@@ -121,9 +121,9 @@ let template = [{
       console.log("绘制图形")
       let calculationWindow = windowManager.getWindow('CalculationWindow')
       if(calculationWindow === null){
-        calculationWindow = windowManager.createWindow('CalculationWindow')
+        calculationWindow = windowManager.createWindow('CalculationWindow', true)
       }
-      //calculationWindow.webContents.send('click-menu-item', 'visualize-result')
+      calculationWindow.webContents.send('click-menu-item', 'visualize-result')
     }
   }]
 }, {
@@ -166,6 +166,10 @@ let template = [{
     label: '版权信息',
     click: function () {
       console.log("版权信息")
+      console.log('参数窗口的ID是'+ windowManager.getWindow('ParametersWindow').id)
+      console.log('计算窗口的ID是'+ windowManager.getWindow('CalculationWindow').id)
+
+
     }
   }]
 }

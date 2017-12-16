@@ -7,10 +7,23 @@ let windowList = new Map()
 let windowOptions = null
 let windowUrl = null
 let debug = false
+let mainWindow = null
+let mainWindowName
 
-exports.createWindow = function createWindow(windowName) {
+exports.createWindow = function createWindow(windowName, isReload=false) {
   setWindowInfo(windowName)
-  onCreateWindow(windowName, windowOptions, windowUrl, debug)
+  // Reload or create Window
+  if(isReload && windowList.size>0){
+    // Delete the origin window stored in windowList
+    windowList.delete(mainWindowName)
+    // Reload window
+    mainWindow.loadURL(windowUrl)
+    mainWindowName = windowName
+    windowList.set(windowName, mainWindow)
+  }else{
+    // Create new window
+    onCreateWindow(windowName, windowOptions, windowUrl, debug)
+  }
   return windowList.get(windowName)
 }
 
@@ -23,6 +36,19 @@ exports.getWindow = function(windowName){
   }
 }
 
+exports.setMainWindow = function(windowName){
+  mainWindowName = windowName
+  mainWindow = windowList.get(mainWindowName)
+}
+
+exports.getMainWindow = function(){
+  if(mainWindow !== null && typeof(mainWindow)!=='undefined')
+  return mainWindow
+}
+
+exports.refreshWindow = function(){
+
+}
 
 let defaultWindowOptions = {
   width: 1080,
