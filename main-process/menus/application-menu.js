@@ -109,11 +109,21 @@ let template = [{
     label: '模型计算',
     click: function () {
       console.log("模型计算")
+      let calculationWindow = windowManager.getWindow('CalculationWindow')
+      if(calculationWindow === null){
+        calculationWindow = windowManager.createWindow('CalculationWindow')
+      }
+      //calculationWindow.webContents.send('click-menu-item', 'calc-model')
     }
   }, {
     label: '绘制图形',
     click: function () {
       console.log("绘制图形")
+      let calculationWindow = windowManager.getWindow('CalculationWindow')
+      if(calculationWindow === null){
+        calculationWindow = windowManager.createWindow('CalculationWindow')
+      }
+      //calculationWindow.webContents.send('click-menu-item', 'visualize-result')
     }
   }]
 }, {

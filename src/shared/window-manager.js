@@ -6,11 +6,12 @@ const BASE_PATH = path.join('file://', __dirname, '/../../')
 let windowList = new Map()
 let windowOptions = null
 let windowUrl = null
-let debug = true
+let debug = false
 
 exports.createWindow = function createWindow(windowName) {
   setWindowInfo(windowName)
   onCreateWindow(windowName, windowOptions, windowUrl, debug)
+  return windowList.get(windowName)
 }
 
 // if value of windowList doesn't exit, return 'undefined'
@@ -35,6 +36,10 @@ function setWindowInfo(windowName){
     case 'ParametersWindow':
       windowOptions = defaultWindowOptions
       windowUrl = path.join(BASE_PATH,'/sections/para-page/para-page.html')
+      break
+    case 'CalculationWindow':
+      windowOptions = defaultWindowOptions
+      windowUrl = path.join(BASE_PATH,'/sections/calculation-page/calculation-page.html')
       break
     default:
       windowOptions = defaultWindowOptions

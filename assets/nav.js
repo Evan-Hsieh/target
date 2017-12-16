@@ -13,6 +13,12 @@ electron.ipcRenderer.on('click-menu-item', function(event, message){
     case 'check-para':
       document.getElementById('button-check-para').click()
       break
+    case 'calc-model':
+      document.getElementById('button-calc-model').click()
+      break
+    case 'visualize-result':
+      document.getElementById('button-visualize-result').click()
+      break
     default:
       break
   }
