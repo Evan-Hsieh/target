@@ -2,7 +2,7 @@ const electron = require('electron')
 const settings = require('electron-settings')
 const defaultClickButtonIdList = [
   'button-set-body-para',
-  'button-calc-model'
+  'button-calc-models'
 ]
 
 
@@ -16,8 +16,8 @@ electron.ipcRenderer.on('click-menu-item', function(event, message){
     case 'check-para':
       document.getElementById('button-check-para').click()
       break
-    case 'calc-model':
-      document.getElementById('button-calc-model').click()
+    case 'calc-models':
+      document.getElementById('button-calc-models').click()
       break
     case 'visualize-result':
       document.getElementById('button-visualize-result').click()

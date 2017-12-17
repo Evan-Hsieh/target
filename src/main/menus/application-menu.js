@@ -113,7 +113,7 @@ let template = [{
       if(calculationWindow === null){
         calculationWindow = windowManager.createWindow('CalculationWindow', true)
       }
-      calculationWindow.webContents.send('click-menu-item', 'calc-model')
+      calculationWindow.webContents.send('click-menu-item', 'calc-models')
     }
   }, {
     label: '绘制图形',

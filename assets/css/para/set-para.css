@@ -48,7 +48,7 @@
     clear:both;
 }
 
-.confirm-button {
+.submit-button {
     align-self: flex-start;
     margin-right: 1em;
     border: 2px solid;
