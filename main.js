@@ -3,6 +3,7 @@ const glob = require('glob')
 const electron = require('electron')
 const autoUpdater = require('./auto-updater')
 const windowManager = require('./src/shared/window-manager')
+const entityModel = require('./src/main/models/entity-model')
 const app = electron.app
 
 if (process.mas) app.setName('Electron APIs')
@@ -83,4 +84,8 @@ switch (process.argv[1]) {
     console.log('target/main.js')
     console.log('process id is ' + process.pid)
     initialize()
+}
+
+function setMainMillileModel(mModel){
+  entityModel.setMissileModel(mModel)
 }

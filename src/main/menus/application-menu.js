@@ -4,8 +4,7 @@ const Menu = electron.Menu
 const app = electron.app
 
 const windowManager = require('../../shared/window-manager')
-
-
+const entityModel = require('../models/entity-model')
 
 let template = [{
   label: '文件',
@@ -166,9 +165,13 @@ let template = [{
     label: '版权信息',
     click: function () {
       console.log("版权信息")
-      console.log('参数窗口的ID是'+ windowManager.getWindow('ParametersWindow').id)
-      console.log('计算窗口的ID是'+ windowManager.getWindow('CalculationWindow').id)
+      //console.log('参数窗口的ID是'+ windowManager.getWindow('ParametersWindow').id)
+      // // console.log('计算窗口的ID是'+ windowManager.getWindow('CalculationWindow').id)
 
+      let mModel = entityModel.getMissileModel()
+      for(let [key,value] of mModel){
+        console.log('Para name:' + key + ',Para value:' + value)
+      }
 
     }
   }]

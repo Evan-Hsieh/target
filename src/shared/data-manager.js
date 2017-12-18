@@ -1,3 +1,5 @@
+const remote = require('electron').remote
+const entityModel  = remote.require('./src/main/models/entity-model')
 const submitButtons = document.querySelectorAll('.submit-button')
 
 Array.prototype.forEach.call(submitButtons, function (submitBtn) {
@@ -11,12 +13,21 @@ Array.prototype.forEach.call(submitButtons, function (submitBtn) {
 
 function collectData(sectionId){
   let selectElement = '#' + sectionId +' .input-para'
+
   //console.log(selectElement)
   let inputFrames = document.querySelectorAll(selectElement)
   Array.prototype.forEach.call(inputFrames, function (inputFrame) {
-    console.log('input value:' + inputFrame.id)
-    console.log('input value:' + inputFrame.value)
+    let inputFrameId = inputFrame.id
+    let paraName = inputFrameId.substr(6)
+    //console.log('para name:' + paraName)
+    //console.log('input value:' + inputFrame.value)
+    //mMissileModel[paraName] = inputFrame.value
+    entityModel.setMissileModelValue(paraName, inputFrame.value)
   })
+  //remote.require('./src/main/models/entity-model').setMissileModel(mMissileModel)
+  //remote.setMainMissileModel(mMissileModel)
 }
+
+
 
 
