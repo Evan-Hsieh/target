@@ -24,203 +24,203 @@ exports.setMissileModel = function(mModel){
 
 let predefineModel = [
   {
-    'para-item-id':'type_warhead',
+    'para-item-id':'type-warhead',
     'para-item-name':'头部曲线类型',
     'para-item-value':'undefined',
     'para-item-units':'undefined',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'length_warhead',
+    'para-item-id':'length-warhead',
     'para-item-name':'头部长度',
     'para-item-value':'undefined',
     'para-item-units':'米',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'diameter_warhead',
+    'para-item-id':'diameter-warhead',
     'para-item-name':'头部末端直径',
     'para-item-value':'undefined',
     'para-item-units':'米',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'diameter_column',
+    'para-item-id':'diameter-column',
     'para-item-name':'圆柱段直径',
     'para-item-value':'undefined',
     'para-item-units':'米',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'length_column',
+    'para-item-id':'length-column',
     'para-item-name':'圆柱段长度',
     'para-item-value':'undefined',
     'para-item-units':'米',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'type_stern',
+    'para-item-id':'type-stern',
     'para-item-name':'收缩尾部类型',
     'para-item-value':'undefined',
     'para-item-units':'undefined',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'length_stern',
+    'para-item-id':'length-stern',
     'para-item-name':'收缩尾部长度',
     'para-item-value':'undefined',
     'para-item-units':'米',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'diameter_tail',
+    'para-item-id':'diameter-tail',
     'para-item-name':'底部直径',
     'para-item-value':'undefined',
     'para-item-units':'米',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'diameter_nozzle',
+    'para-item-id':'diameter-nozzle',
     'para-item-name':'喷管出口直径',
     'para-item-value':'undefined',
     'para-item-units':'米',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'num_group_wings',
+    'para-item-id':'num-group-wings',
     'para-item-name':'弹翼组数',
     'para-item-value':'undefined',
     'para-item-units':'组',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'pos_wings',
+    'para-item-id':'pos-wings',
     'para-item-name':'弹翼位置',
     'para-item-value':'undefined',
     'para-item-units':'米',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'num_wings_per_group',
+    'para-item-id':'num-wings-per-group',
     'para-item-name':'翼片数据',
     'para-item-value':'undefined',
     'para-item-units':'片',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'layout_angle_wings',
+    'para-item-id':'layout-angle-wings',
     'para-item-name':'布局(周向角度)',
     'para-item-value':'undefined',
     'para-item-units':'角度',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'length_root_chord',
+    'para-item-id':'length-root-chord',
     'para-item-name':'根弦长度',
     'para-item-value':'undefined',
     'para-item-units':'米',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'distance_root_chord',
+    'para-item-id':'distance-root-chord',
     'para-item-name':'根弦到弹轴的距离',
     'para-item-value':'undefined',
     'para-item-units':'米',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'thickness_root_chord',
+    'para-item-id':'thickness-root-chord',
     'para-item-name':'根弦厚度',
     'para-item-value':'undefined',
     'para-item-units':'米',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'length_tip_chord',
+    'para-item-id':'length-tip-chord',
     'para-item-name':'梢弦长度',
     'para-item-value':'undefined',
     'para-item-units':'米',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'distance_tip_chord',
+    'para-item-id':'distance-tip-chord',
     'para-item-name':'梢弦到弹轴距离',
     'para-item-value':'undefined',
     'para-item-units':'米',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'thickness_tip_chord',
+    'para-item-id':'thickness-tip-chord',
     'para-item-name':'梢弦厚度',
     'para-item-value':'undefined',
     'para-item-units':'米',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'angle_front_edge',
+    'para-item-id':'angle-front-edge',
     'para-item-name':'前缘后掠角',
     'para-item-value':'undefined',
     'para-item-units':'角度',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'angle_rear_edge',
+    'para-item-id':'angle-rear-edge',
     'para-item-name':'后缘后掠角',
     'para-item-value':'undefined',
     'para-item-units':'角度',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'type_wings_profile',
+    'para-item-id':'type-wings-profile',
     'para-item-name':'弹翼剖面类型',
     'para-item-value':'undefined',
     'para-item-units':'undefined',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'height_flight',
+    'para-item-id':'height-flight',
     'para-item-name':'飞行高度(海拔)',
     'para-item-value':'undefined',
     'para-item-units':'米',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'mach_flight',
+    'para-item-id':'mach-flight',
     'para-item-name':'飞行马赫数',
     'para-item-value':'undefined',
     'para-item-units':'马赫',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'angle_flight',
+    'para-item-id':'angle-flight',
     'para-item-name':'攻角',
     'para-item-value':'undefined',
     'para-item-units':'角度',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'barycenter_ref',
+    'para-item-id':'barycenter-ref',
     'para-item-name':'质心',
     'para-item-value':'undefined',
     'para-item-units':'米',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'length_ref',
+    'para-item-id':'length-ref',
     'para-item-name':'参考长度',
     'para-item-value':'undefined',
     'para-item-units':'米',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'area_ref',
+    'para-item-id':'area-ref',
     'para-item-name':'参考面积',
     'para-item-value':'undefined',
     'para-item-units':'平方米',
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'fs_value',
+    'para-item-id':'fs-value-ref',
     'para-item-name':'fs值',
     'para-item-value':'undefined',
     'para-item-units':'undefined',
