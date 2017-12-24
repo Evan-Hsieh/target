@@ -7,54 +7,31 @@
       <div class="section-wrapper">
         <h1>
           <svg class="section-icon"><use xlink:href="../../assets/img/icons.svg#icon-windows"></use></svg>
-          设置飞行条件
+          查看参数
         </h1>
-        <h3>飞行条件参数在此页面进行设置，具体包括：飞行海拔、飞行马赫数与攻角。</h3>
-
-        <p>其中飞行海拔即飞行高度，其单位是米，默认值为0海拔。攻角的单位为角度。</p>
+        <h3>各项输入的参数在此页面进行查看，以确保输入参数与期望的一致</h3>
 
       </div>
     </header>
 
     <div class="demo">
-
       <div class="demo-wrapper">
+          <table id="check-para-table" class="para-table" border="1">
+              <tr>
+                  <th>参数名</th>
+                  <th>参数值</th>
+                  <th>单位</th>
+                  <th>备注</th>
+              </tr>
+          </table>
 
-        <button id="fly-condition-para" class="js-container-target demo-toggle-button">飞行条件
-          <!-- <div class="demo-meta u-avoid-clicks">支持: Win, macOS, Linux <span class="demo-meta-divider">|</span> 进程: Main</div> -->
-        </button>
-        <div class="info-area">
-          <div class="para-item">
-            <div class="para-item-label">飞行海拔:</div>
-            <input id="input-height-flight" class="input-para" type="text" name="para">
-            <div class="clear-both"></div>
-          </div>
-        </div>
-        <div class="info-area">
-          <div class="para-item">
-            <div class="para-item-label">飞行马赫数:</div>
-            <input id="input-mach-flight" class="input-para" type="text" name="para">
-            <div class="clear-both"></div>
-          </div>
-        </div>
-        <div class="info-area">
-          <div class="para-item">
-            <div class="para-item-label">攻角:</div>
-            <input id="input-angle-flight" class="input-para" type="text" name="para">
-            <div class="clear-both"></div>
-          </div>
-        </div>
 
       </div><!-- /div demo-wrapper -->
-
 
       <div class="footer-wrapper">
         <button id="button-submit-fly-condition" class="submit-button">确定提交</button>
       </div>
     </div><!-- /div demo -->
-
-
-
 
   </section>
 </template>
