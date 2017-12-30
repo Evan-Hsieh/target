@@ -1,0 +1,25 @@
+.confirm-button {
+    align-self: flex-start;
+    margin-right: 1em;
+    border: 2px solid;
+    border-radius: 4px;
+    font: inherit;
+    font-size: 1.2em;
+    padding: .4em 1.2em;
+    color: inherit;
+    background-color: transparent;
+    float:right;
+}
+
+.clear-both{
+    clear: both;
+}
+
+
+.footer-wrapper {
+    position: relative;
+    max-width: 740px;
+    margin: 0 auto 5rem auto;
+    padding: 2rem;
+    border-top: 1px solid var(--color-border);
+}
