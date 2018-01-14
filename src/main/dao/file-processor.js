@@ -2,7 +2,10 @@ const fs = require('fs')
 
 exports.readFile = function (filePath) {
   fs.readFile(filePath, 'utf-8', function (err, data) {
-
+    if (err) {
+      console.log(err)
+    }
+    console.log(data)
   })
 }
 

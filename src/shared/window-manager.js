@@ -6,7 +6,7 @@ const BASE_PATH = path.join('file://', __dirname, '/../../')
 let windowList = new Map()
 let windowOptions = null
 let windowUrl = null
-let debug = false
+let debug = true
 let mainWindow = null
 let mainWindowName
 
