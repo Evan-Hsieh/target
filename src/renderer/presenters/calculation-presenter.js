@@ -6,15 +6,22 @@ const BASE_PATH = path.join(__dirname, '/../../../')
 
 document.getElementById('button-calculate-model').addEventListener('click', function (event) {
   console.log('click calculation button')
-  calculate();
+  calculate()
 })
 
 function calculate() {
   let inputFilePath = BASE_PATH + 'bin/t.txt'
-  readFile(inputFilePath)
+  //readFile(inputFilePath)
+  writeFile(inputFilePath, 'hello world!')
 }
 
 function readFile(path) {
   console.log('calculation presenter: readFile()')
   controller.readFile(path)
+}
+
+
+function writeFile(path, data) {
+  console.log('calculation presenter: writeFile()')
+  controller.writeFile(path, data)
 }

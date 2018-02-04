@@ -10,14 +10,22 @@ exports.readFile = function (filePath) {
 }
 
 
-exports.writeFile = function (filePath) {
+exports.writeFile = function (filePath,data) {
   fs.writeFile(filePath, data, function (err) {
-
+    if (err) {
+      console.log(err)
+    } else {
+      console.log(data)
+    }
   })
 }
 
-exports.appendFile = function (filePath) {
+exports.appendFile = function (filePath,data) {
   fs.appendFile(filePath, data, function (err) {
-
+    if (err) {
+      console.log(err)
+    } else {
+      console.log(data)
+    }
   })
 }
