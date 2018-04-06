@@ -69,16 +69,24 @@ function collectData(sectionId){
     // Get the parameter name from the id of input frame.
     // Because the id has the prefix 'input-', the substring begin at index 6
     let paraName = inputFrameId.substr(6)
-    entityModel.setMissileModelValue(paraName, inputFrame.value)
+    entityModel.setMissileModelValue(paraName, removeLastComma(inputFrame.value))
 
     // Set the table value of check-para page
     let trTableId = 'tr-' + paraName
-    document.getElementById(trTableId).children[1].innerHTML = transferParaValueForShow(inputFrame.value)
+    document.getElementById(trTableId).children[1].innerHTML = transferParaValueForShow(removeLastComma(inputFrame.value))
 
   })
   //remote.require('./src/main/models/entity-model').setMissileModel(mMissileModel)
   //remote.setMainMissileModel(mMissileModel)
 }
+
+function removeLastComma(inputStr){
+  if (inputStr.lastIndexOf(',') === inputStr.length - 1) {
+    inputStr = inputStr.substr(0, inputStr.length - 1)
+  }
+  return inputStr
+}
+
 
 function transferParaValueForShow(value){
   switch(value){

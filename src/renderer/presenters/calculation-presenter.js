@@ -12,7 +12,7 @@ document.getElementById('button-calculate-model').addEventListener('click', func
 function calculate() {
   let inputFilePath = BASE_PATH + 'bin/t.txt'
   //readFile(inputFilePath)
-  writeFile(inputFilePath, 'hello world!')
+  writeFile(inputFilePath)
 }
 
 function readFile(path) {
@@ -23,5 +23,10 @@ function readFile(path) {
 
 function writeFile(path, data) {
   console.log('calculation presenter: writeFile()')
-  controller.writeFile(path, data)
+  if(arguments.length === 1) {
+    controller.writeFile(path)
+  }
+  if(arguments.length === 2) {
+    controller.writeFile(path, data)
+  }
 }
