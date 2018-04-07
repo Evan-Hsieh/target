@@ -101,13 +101,6 @@ let predefineModel = [
     'para-item-remarks':'undefined'
   },
   {
-    'para-item-id':'num-wings-per-group',
-    'para-item-name':'翼片数据',
-    'para-item-value':'undefined',
-    'para-item-units':'片',
-    'para-item-remarks':'undefined'
-  },
-  {
     'para-item-id':'layout-angle-wings',
     'para-item-name':'布局(周向角度)',
     'para-item-value':'undefined',
