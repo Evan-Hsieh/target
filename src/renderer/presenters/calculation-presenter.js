@@ -11,22 +11,22 @@ document.getElementById('button-calculate-model').addEventListener('click', func
 
 function calculate() {
   let inputFilePath = BASE_PATH + 'bin/t.txt'
-  //readFile(inputFilePath)
-  writeFile(inputFilePath)
+  //readData(inputFilePath)
+  writeData(inputFilePath)
 }
 
-function readFile(path) {
-  console.log('calculation presenter: readFile()')
+function readData(path) {
+  console.log('calculation presenter: readData()')
   controller.readFile(path)
 }
 
 
-function writeFile(path, data) {
-  console.log('calculation presenter: writeFile()')
+function writeData(path, data) {
+  console.log('calculation presenter: writeData()')
   if(arguments.length === 1) {
-    controller.writeFile(path)
+    controller.writeDefaultData(path)
   }
   if(arguments.length === 2) {
-    controller.writeFile(path, data)
+    controller.writeCustomData(path, data)
   }
 }

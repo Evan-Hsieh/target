@@ -3,8 +3,8 @@ const fileProcessor = require('../dao/file-processor')
 const entityModel = require('../models/entity-model')
 
 
-let fltcon = '$FLTCON $ALT=%%,NALPHA=%%,ALPHA=%%,NMACH=%%,MACH=%%,$'
-
+let fltcon = '$FLTCON ALT=%%,NALPHA=%%,ALPHA=%%,NMACH=%%,MACH=%%,$'
+let refq = '$REFQ XCG=%%,LREF=%%,SREF=%%,$'
 
 exports.readFile = function readFile(path) {
   fileProcessor.readFile(path)
@@ -18,12 +18,14 @@ exports.readFile = function readFile(path) {
 }
 
 
-exports.writeFile = function writeFile(path, inputData) {
-  console.log('controller: writeFile()')
-  let data = inputData
-  if (arguments.length === 1) {
-    data = processFltconData(fltcon)
-  }
+exports.writeDefaultData = function writeDefaultData(path) {
+  console.log('controller: writeDefaultData()')
+  fileProcessor.writeFile(path, processFltconData(fltcon))
+  fileProcessor.appendFile(path, '\n'+processRefValue(refq))
+}
+
+exports.writeCustomData = function writeCustomData(path,data) {
+  console.log('controller: writeCustomData.')
   fileProcessor.writeFile(path, data)
 }
 
@@ -33,6 +35,10 @@ function setParaValue(vector, paraValue) {
 
 function getParaArrayLength(paraName){
   let paraArray = entityModel.getMissileModelValue(paraName)
+  if(!paraArray) {
+    // If paraArray is undefined, return 0;
+    return 0;
+  }
   let paraArrayLength = 1
   if (paraArray.indexOf(',') !== -1) {
     paraArrayLength = paraArray.split(',').length
@@ -49,5 +55,16 @@ function processFltconData(input) {
   res = setParaValue(res, entityModel.getMissileModelValue('mach-flight'))
   res = setParaValue(res, getParaArrayLength('angle-flight'))
   res = setParaValue(res, entityModel.getMissileModelValue('angle-flight'))
+  console.log('fltcon:' + res)
+  return res
+}
+
+function processRefValue(input){
+  console.log('controller: processRefValue.')
+  let res = input
+  res = setParaValue(res, entityModel.getMissileModelValue('barycenter-ref'))
+  res = setParaValue(res, entityModel.getMissileModelValue('length-ref'))
+  res = setParaValue(res, entityModel.getMissileModelValue('area-ref'))
+  console.log('refq:' + res)
   return res
 }
