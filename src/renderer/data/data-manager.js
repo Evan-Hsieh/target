@@ -90,16 +90,12 @@ function removeLastComma(inputStr){
 
 function transferParaValueForShow(value){
   switch(value){
-    case 'cone-type-warhead':
+    case 'CONE':
       return '锥形'
-    case 'camber-type-warhead':
+    case 'OGIVE':
       return '弧形'
-    case 'carmen-type-warhead':
+    case 'KARMAN':
       return '卡门'
-    case 'cone-type-stern':
-      return '锥形'
-    case 'camber-type-stern':
-      return '弧形'
     default:
       return value
   }

@@ -73,6 +73,7 @@ function handleSectionTrigger (event) {
 
   // Save currently active button in localStorage
   const buttonId = event.target.getAttribute('id')
+  console.log('button click:' + buttonId)
   settings.set('activeSectionButtonId', buttonId)
 }
 

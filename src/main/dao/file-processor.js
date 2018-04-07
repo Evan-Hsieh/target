@@ -1,4 +1,5 @@
 const fs = require('fs')
+const controller = require('../controllers/controller')
 
 exports.readFile = function (filePath) {
   fs.readFile(filePath, 'utf-8', function (err, data) {
@@ -10,22 +11,48 @@ exports.readFile = function (filePath) {
 }
 
 
-exports.writeFile = function (filePath,data) {
+exports.writeFile = function (filePath, data) {
+  console.log('file-processor : writeFile.')
   fs.writeFile(filePath, data, function (err) {
     if (err) {
       console.log(err)
     } else {
-      console.log(data)
+      console.log('write successfully:')
     }
   })
 }
 
-exports.appendFile = function (filePath,data) {
+exports.appendFile = function (filePath, data) {
   fs.appendFile(filePath, data, function (err) {
     if (err) {
       console.log(err)
     } else {
-      console.log(data)
+      console.log('append successfully')
+    }
+  })
+}
+
+
+exports.appendFileSync = function (filePath, data) {
+  console.log('file-processor: appendFileSync.')
+  try {
+    fs.appendFileSync(filePath, data)
+    console.log('The "data to append" was appended to file!')
+  } catch (err) {
+    console.log('error:' + err)
+  }
+}
+
+exports.unlink = function (filePath) {
+  console.log('file-processor: unlink.' + filePath)
+  fs.unlink(filePath, (err) => {
+    if (err) {
+      console.log(err)
+      return false
+    } else {
+      console.log('unlink ' + filePath + ' successfully')
+      controller.appendDefaultData(filePath)
+      return true
     }
   })
 }
