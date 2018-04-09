@@ -25,7 +25,7 @@
           <div class="info-area">
             <div class="para-item">
               <div class="para-item-label">弹翼组数:</div>
-              <input id="num-group-wings" class="input-para" type="text" name="para">
+              <input id="input-num-group-wings" class="input-para" type="text" name="para">
               <div class="clear-both"></div>
               <div class="clear-both"></div>
             </div>
@@ -33,7 +33,7 @@
           <div class="info-area">
             <div class="para-item">
               <div class="para-item-label">弹翼位置:</div>
-              <input id="pos-wings" class="input-para" type="text" name="para">
+              <input id="input-pos-wings" class="input-para" type="text" name="para">
               <div class="clear-both"></div>
             </div>
           </div>
@@ -41,7 +41,7 @@
           <div class="info-area">
             <div class="para-item">
               <div class="para-item-label">布局(周向角度)</div>
-              <input id="layout-angle-wings" class="input-para" type="text" name="para">
+              <input id="input-layout-angle-wings" class="input-para" type="text" name="para">
               <div class="clear-both"></div>
             </div>
           </div>
@@ -54,21 +54,24 @@
           <div class="info-area">
             <div class="para-item">
               <div class="para-item-label">
-                <select id="int-type" class="select-label" name="para">
-                  <option value="angle-front-edge" selected="selected">前缘后掠角：</option>
-                  <option value="angle-rear-edge">后缘后掠角</option>
+                <select id="input-sweep-back-type" class="select-label" name="para">
+                  <option value="0." selected="selected">前缘后掠角</option>
+                  <option value="1.">后缘后掠角</option>
                 </select>
               </div>
 
-              <input id="input-sweep-back" class="select-input-para" type="text" name="para">
+              <input id="input-sweep-back" class="input-para" type="text" name="para">
               <div class="clear-both"></div>
             </div>
           </div>
           <div class="info-area">
             <div class="para-item">
               <div class="para-item-label">弹翼剖面类型:</div>
-              <input id="input-type-wing-section" class="input-para" type="text" name="para">
+              <select id="input-type-wings-profile" class="input-para" type="text" name="para">
+                <option value="HEX">六边形</option>
+              </select>
               <div class="clear-both"></div>
+
             </div>
           </div>
 

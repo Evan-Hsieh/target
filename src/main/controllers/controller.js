@@ -6,6 +6,7 @@ const entityModel = require('../models/entity-model')
 let fltcon = '$FLTCON ALT=%%,NALPHA=%%,ALPHA=%%,NMACH=%%,MACH=%%,$'
 let refq = '$REFQ XCG=%%,LREF=%%,SREF=%%,$'
 let body = '$AXIBOD TNOSE=%%,LNOSE=%%,DNOSE=%%,LCENTER=%%,DCENTER=%%,TAFT=%%,LAFT=%%,DAFT=%%,DEXIT=%%,$'
+let wing = '$FINSET%% SECTYP=%%,XLE=%%,NPANEL=%%,PHIF=%%,STA=%%,SWEEP=%%,CHORD=%%,SSPAN=%%,$'
 let other = 'DIM M\nDERIV DEG\nPLOT\nDAMP'
 
 exports.readFile = function readFile(path) {
@@ -93,6 +94,35 @@ function processRefValue(input) {
   res = setParaValue(res, entityModel.getMissileModelValue('barycenter-ref'))
   res = setParaValue(res, entityModel.getMissileModelValue('length-ref'))
   res = setParaValue(res, entityModel.getMissileModelValue('area-ref'))
+  return res
+}
+
+
+function processWingPara(input) {
+  console.log('controller: processWingPara.')
+  let res = input
+  //let numWingGroup = entityModel.getMissileModelValue('num-group-wings')
+  let numWingGroup = 1
+  let positionWing = [entityModel.getMissileModelValue('pos-wings')]
+  if (positionWing[0].indexOf(',') !== -1) {
+    positionWing = positionWing[0].split(',')
+    numWingGroup = positionWing.length
+  }
+
+  for (let i = 0; i < numWingGroup; i++) {
+    res = setParaValue(res, i)
+    res = setParaValue(res, entityModel.getMissileModelValue('type-wings-profile'))
+    res = setParaValue(res, positionWing[i])
+
+    let layoutAngleWings = entityModel.getMissileModelValue('layout-angle-wings')
+    res = setParaValue(res, entityModel.getMissileModelValue(layoutAngleWings.length))
+    res = setParaValue(res, layoutAngleWings)
+
+
+
+  }
+
+
   return res
 }
 
