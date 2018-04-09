@@ -33,6 +33,8 @@ exports.appendDefaultData = function writeDefaultData(path) {
   fileProcessor.appendFileSync(path, processFltconData(fltcon))
   fileProcessor.appendFileSync(path, '\n' + processRefValue(refq))
   fileProcessor.appendFileSync(path, '\n' + processBodyPara(body))
+  fileProcessor.appendFileSync(path, '\n' + processWingPara(wing))
+  fileProcessor.appendFileSync(path, '\n' + other)
 }
 
 
@@ -110,19 +112,26 @@ function processWingPara(input) {
   }
 
   for (let i = 0; i < numWingGroup; i++) {
-    res = setParaValue(res, i)
+    res = setParaValue(res, (i + 1))
     res = setParaValue(res, entityModel.getMissileModelValue('type-wings-profile'))
     res = setParaValue(res, positionWing[i])
 
     let layoutAngleWings = entityModel.getMissileModelValue('layout-angle-wings')
-    res = setParaValue(res, entityModel.getMissileModelValue(layoutAngleWings.length))
+    let numPanel = 1
+    if (layoutAngleWings.indexOf(',') !== -1) {
+      numPanel = layoutAngleWings.split(',').length
+    }
+    res = setParaValue(res, numPanel)
     res = setParaValue(res, layoutAngleWings)
 
+    res = setParaValue(res, entityModel.getMissileModelValue(entityModel.sweepBackType))
+    res = setParaValue(res, entityModel.getMissileModelValue(entityModel.sweepBack))
 
-
+    let chordValue = entityModel.getMissileModelValue(entityModel.lengthRootChord) + ',' + entityModel.getMissileModelValue(entityModel.lengthTipChord)
+    res = setParaValue(res, chordValue)
+    let sspanValue = entityModel.getMissileModelValue(entityModel.distanceRootChord) + ',' + entityModel.getMissileModelValue(entityModel.distanceTipChord)
+    res = setParaValue(res, sspanValue)
   }
-
-
   return res
 }
 

@@ -1,9 +1,26 @@
 exports.inputTag = 'input-'
-exports.sweepBackType = 'sweep-back-type'
-exports.sweepBack = 'sweep-back'
-exports.angleFrontEdge = 'angle-front-edge'
-exports.angleRearEdge = 'angle-rear-edge'
 
+
+const lengthRootChord = 'length-root-chord'
+exports.lengthRootChord = lengthRootChord
+
+const distanceRootChord = 'distance-root-chord'
+exports.distanceRootChord = distanceRootChord
+
+const lengthTipChord = 'length-tip-chord'
+exports.lengthTipChord = lengthTipChord
+
+const distanceTipChord = 'distance-tip-chord'
+exports.distanceTipChord = distanceTipChord
+
+const sweepBackType = 'sweep-back-type'
+exports.sweepBackType = sweepBackType
+const sweepBack = 'sweep-back'
+exports.sweepBack = sweepBack
+const angleFrontEdge = 'angle-front-edge'
+exports.angleFrontEdge = angleFrontEdge
+const angleRearEdge = 'angle-rear-edge'
+exports.angleRearEdge = angleRearEdge
 
 let missileModel = new Map()
 //exports.missileModel = missileModel
@@ -115,14 +132,14 @@ let predefineModel = [
     'para-item-remarks': 'undefined'
   },
   {
-    'para-item-id': 'length-root-chord',
+    'para-item-id': lengthRootChord,
     'para-item-name': '根弦长度',
     'para-item-value': 'undefined',
     'para-item-units': '米',
     'para-item-remarks': 'undefined'
   },
   {
-    'para-item-id': 'distance-root-chord',
+    'para-item-id': distanceRootChord,
     'para-item-name': '根弦到弹轴的距离',
     'para-item-value': 'undefined',
     'para-item-units': '米',
@@ -136,14 +153,14 @@ let predefineModel = [
     'para-item-remarks': 'undefined'
   },
   {
-    'para-item-id': 'length-tip-chord',
+    'para-item-id': lengthTipChord,
     'para-item-name': '梢弦长度',
     'para-item-value': 'undefined',
     'para-item-units': '米',
     'para-item-remarks': 'undefined'
   },
   {
-    'para-item-id': 'distance-tip-chord',
+    'para-item-id': distanceTipChord,
     'para-item-name': '梢弦到弹轴距离',
     'para-item-value': 'undefined',
     'para-item-units': '米',
@@ -157,14 +174,14 @@ let predefineModel = [
     'para-item-remarks': 'undefined'
   },
   {
-    'para-item-id': 'angle-front-edge',
+    'para-item-id': angleFrontEdge,
     'para-item-name': '前缘后掠角',
     'para-item-value': 'undefined',
     'para-item-units': '角度',
     'para-item-remarks': 'undefined'
   },
   {
-    'para-item-id': 'angle-rear-edge',
+    'para-item-id': angleRearEdge,
     'para-item-name': '后缘后掠角',
     'para-item-value': 'undefined',
     'para-item-units': '角度',

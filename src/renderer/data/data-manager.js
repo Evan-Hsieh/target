@@ -55,7 +55,6 @@ Array.prototype.forEach.call(submitButtons, function (submitBtn) {
     let btnId = event.target.id
     let idArray = btnId.split('-')
     let sectionId = 'set-' + idArray[2] + '-' + idArray[3] + '-section'
-
     collectData(sectionId)
   })
 })
@@ -66,7 +65,6 @@ function collectData(sectionId) {
   let inputFrames = document.querySelectorAll(selectElement)
   Array.prototype.forEach.call(inputFrames, function (inputFrame) {
     let inputFrameId = inputFrame.id
-    console.log('inputFrameId:' + inputFrameId)
     // Get the parameter name from the id of input frame.
     // Because the id has the prefix 'input-', the substring begin at index 6
     let paraName = inputFrameId.substr(6)
@@ -81,11 +79,11 @@ function collectData(sectionId) {
       } else {
         trTableId = 'tr-' + entityModel.angleRearEdge
       }
+      entityModel.setMissileModelValue(entityModel.sweepBackType,inputSweepBackType.value )
+      entityModel.setMissileModelValue(entityModel.sweepBack,inputFrame.value )
     }
 
-    console.log('trTableId:' + trTableId)
     document.getElementById(trTableId).children[1].innerHTML = transferParaValueForShow(removeLastComma(inputFrame.value))
-
   })
   //remote.require('./src/main/models/entity-model').setMissileModel(mMissileModel)
   //remote.setMainMissileModel(mMissileModel)
