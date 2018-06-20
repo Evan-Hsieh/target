@@ -26,6 +26,7 @@ let missileModel = new Map()
 //exports.missileModel = missileModel
 
 exports.setMissileModelValue = function (mKey, mValue) {
+  console.log('entity-model:setMissileModelValue. key:' + mKey + ' value:' + mValue)
   missileModel.set(mKey, mValue)
 }
 

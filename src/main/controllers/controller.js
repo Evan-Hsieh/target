@@ -106,6 +106,11 @@ function processWingPara(input) {
   //let numWingGroup = entityModel.getMissileModelValue('num-group-wings')
   let numWingGroup = 1
   let positionWing = [entityModel.getMissileModelValue('pos-wings')]
+  // If the confirm button doesn't been clicked, this para maybe undefined
+  if(typeof positionWing[0]==='undefined'){
+    console.log('controller:processWingPara undefined')
+    return
+  }
   if (positionWing[0].indexOf(',') !== -1) {
     positionWing = positionWing[0].split(',')
     numWingGroup = positionWing.length
