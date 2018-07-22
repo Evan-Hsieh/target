@@ -28,7 +28,7 @@ exports.writeDefaultData = function writeDefaultData(path) {
 }
 
 
-exports.appendDefaultData = function writeDefaultData(path) {
+exports.appendDefaultData = function appendDefaultData(path) {
   console.log('controller: appendDefaultData()')
   fileProcessor.appendFileSync(path, processFltconData(fltcon))
   fileProcessor.appendFileSync(path, '\n' + processRefValue(refq))
