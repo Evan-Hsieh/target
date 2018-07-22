@@ -10,14 +10,10 @@ let wing = '$FINSET%% SECTYP=%%,XLE=%%,NPANEL=%%,PHIF=%%,STA=%%,SWEEP=%%,CHORD=%
 let other = 'DIM M\nDERIV DEG\nPLOT\nDAMP'
 
 exports.readFile = function readFile(path) {
-  fileProcessor.readFile(path)
-  console.log('controller: readFile()')
-  let value = entityModel.getMissileModelValue('length-warhead')
-  console.log(value)
-  let em = entityModel.getMissileModel()
-  if (em.has('length-warhead')) {
-    console.log('val:' + em.get('length-warhead'))
-  }
+  console.log('controller: readFile.')
+  console.log('path:' + path)
+  let dataContent = fileProcessor.readFileSync(path)
+  console.log('dataContent:' + dataContent )
 }
 
 
@@ -33,7 +29,7 @@ exports.appendDefaultData = function appendDefaultData(path) {
   fileProcessor.appendFileSync(path, processFltconData(fltcon))
   fileProcessor.appendFileSync(path, '\n' + processRefValue(refq))
   fileProcessor.appendFileSync(path, '\n' + processBodyPara(body))
-  processWingPara(path,wing)
+  processWingPara(path, wing)
   fileProcessor.appendFileSync(path, '\n' + other)
 }
 
@@ -100,14 +96,14 @@ function processRefValue(input) {
 }
 
 
-function processWingPara(path,input) {
+function processWingPara(path, input) {
   console.log('controller: processWingPara.')
   let res = input
   //let numWingGroup = entityModel.getMissileModelValue('num-group-wings')
   let numWingGroup = 1
   let positionWing = [entityModel.getMissileModelValue('pos-wings')]
   // If the confirm button doesn't been clicked, this para maybe undefined
-  if(typeof positionWing[0]==='undefined'){
+  if (typeof positionWing[0] === 'undefined') {
     console.log('controller:processWingPara undefined')
     return
   }

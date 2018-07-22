@@ -2,14 +2,18 @@ const fs = require('fs')
 const controller = require('../controllers/controller')
 
 exports.readFile = function (filePath) {
-  fs.readFile(filePath, 'utf-8', function (err, data) {
+  return fs.readFile(filePath, 'utf-8', function (err, data) {
     if (err) {
-      console.log(err)
+      console.log('error:' + err)
+      return ''
     }
-    console.log(data)
+    return data
   })
 }
 
+exports.readFileSync = function (filePath) {
+  return fs.readFileSync(filePath, 'utf-8')
+}
 
 exports.writeFile = function (filePath, data) {
   console.log('file-processor : writeFile.')

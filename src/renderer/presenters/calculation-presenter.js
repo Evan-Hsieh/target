@@ -8,10 +8,18 @@ document.getElementById('button-calculate-model').addEventListener('click', func
   console.log('click calculation button')
   calculate()
 })
+document.getElementById('button-draw-result').addEventListener('click', function (event) {
+  console.log('click draw button')
+  visualize()
+})
 
+function visualize() {
+  console.log('calculation-presenter:' + 'vasualize')
+  let outputFilePath = BASE_PATH + 'bin/for006.dat'
+  readData(outputFilePath)
+}
 function calculate() {
   let inputFilePath = BASE_PATH + 'bin/t.txt'
-  //readData(inputFilePath)
   writeData(inputFilePath)
 }
 
