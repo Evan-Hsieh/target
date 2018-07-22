@@ -33,7 +33,7 @@ exports.appendDefaultData = function writeDefaultData(path) {
   fileProcessor.appendFileSync(path, processFltconData(fltcon))
   fileProcessor.appendFileSync(path, '\n' + processRefValue(refq))
   fileProcessor.appendFileSync(path, '\n' + processBodyPara(body))
-  fileProcessor.appendFileSync(path, '\n' + processWingPara(wing))
+  processWingPara(path,wing)
   fileProcessor.appendFileSync(path, '\n' + other)
 }
 
@@ -100,7 +100,7 @@ function processRefValue(input) {
 }
 
 
-function processWingPara(input) {
+function processWingPara(path,input) {
   console.log('controller: processWingPara.')
   let res = input
   //let numWingGroup = entityModel.getMissileModelValue('num-group-wings')
@@ -136,7 +136,10 @@ function processWingPara(input) {
     res = setParaValue(res, chordValue)
     let sspanValue = entityModel.getMissileModelValue(entityModel.distanceRootChord) + ',' + entityModel.getMissileModelValue(entityModel.distanceTipChord)
     res = setParaValue(res, sspanValue)
+
+    // Append content in file
+    fileProcessor.appendFileSync(path, '\n' + res)
+    res = input
   }
-  return res
 }
 
