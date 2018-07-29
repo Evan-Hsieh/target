@@ -2,6 +2,8 @@ const fileProcessor = require('../dao/file-processor')
 
 const entityModel = require('../models/entity-model')
 
+const calculation = require('../calculation/calculation')
+
 
 let fltcon = '$FLTCON ALT=%%,NALPHA=%%,ALPHA=%%,NMACH=%%,MACH=%%,$'
 let refq = '$REFQ XCG=%%,LREF=%%,SREF=%%,$'
@@ -13,7 +15,8 @@ exports.readFile = function readFile(path) {
   console.log('controller: readFile.')
   console.log('path:' + path)
   let dataContent = fileProcessor.readFileSync(path)
-  console.log('dataContent:' + dataContent )
+  //console.log('dataContent:' + dataContent )
+  calculation.processFileResult(dataContent)
 }
 
 
