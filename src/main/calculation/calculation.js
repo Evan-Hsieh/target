@@ -8,8 +8,16 @@ resEntities.mach = []
 resEntities.currentMachIndex = -1
 resEntities.cn = []
 resEntities.cm = []
+resEntities.ca = []
+resEntities.cy = []
+resEntities.cln = []
+resEntities.cll = []
 
 resEntities.cl = []
+resEntities.cd = []
+resEntities.cl_cd = []
+resEntities.x_cp = []
+
 let isNeedUpdateAlpha = true
 
 exports.processFileResult = function processFileResult(fileResult) {
@@ -67,26 +75,30 @@ function parseCalculationResult(fileResult) {
     }
   })
 
-  console.log('alpha:')
-  console.log(resEntities.alpha.toString())
-  console.log('mach')
-  console.log(resEntities.mach.toString())
-  console.log('data')
-
-  console.log(resEntities.cn[0])
-  console.log(resEntities.cn[1])
-
-
-
+  // console.log('alpha:')
+  // console.log(resEntities.alpha.toString())
+  // console.log('mach')
+  // console.log(resEntities.mach.toString())
+  // console.log('data:cl:')
+  // console.log(resEntities.cl[0])
+  // console.log(resEntities.cl[1])
 }
 
 function initForNewRow() {
   // first section
   resEntities.cn[resEntities.currentMachIndex] = []
   resEntities.cm[resEntities.currentMachIndex] = []
+  resEntities.ca[resEntities.currentMachIndex] = []
+  resEntities.cy[resEntities.currentMachIndex] = []
+  resEntities.cln[resEntities.currentMachIndex] = []
+  resEntities.cll [resEntities.currentMachIndex] = []
+
 
   // second section
   resEntities.cl[resEntities.currentMachIndex] = []
+  resEntities.cd[resEntities.currentMachIndex] = []
+  resEntities.cl_cd[resEntities.currentMachIndex] = []
+  resEntities.x_cp[resEntities.currentMachIndex] = []
 }
 
 function setFirstSectionData(lineDataArray) {
@@ -95,10 +107,17 @@ function setFirstSectionData(lineDataArray) {
   }
   resEntities.cn[resEntities.currentMachIndex].push(lineDataArray[1])
   resEntities.cm[resEntities.currentMachIndex].push(lineDataArray[2])
+  resEntities.ca[resEntities.currentMachIndex].push(lineDataArray[3])
+  resEntities.cy[resEntities.currentMachIndex].push(lineDataArray[4])
+  resEntities.cln[resEntities.currentMachIndex].push(lineDataArray[5])
+  resEntities.cll [resEntities.currentMachIndex].push(lineDataArray[6])
 }
 
 function setSecondSectionData(lineDataArray) {
   resEntities.cl[resEntities.currentMachIndex].push(lineDataArray[1])
+  resEntities.cd[resEntities.currentMachIndex].push(lineDataArray[2])
+  resEntities.cl_cd[resEntities.currentMachIndex].push(lineDataArray[3])
+  resEntities.x_cp[resEntities.currentMachIndex].push(lineDataArray[4])
 }
 
 function setResultEntity(dataArray) {
