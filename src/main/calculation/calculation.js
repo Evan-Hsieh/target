@@ -1,30 +1,35 @@
-
 const utils = require('../../shared/utils')
 
-
 let resEntities = {}
-resEntities.alpha = []
-resEntities.mach = []
-resEntities.currentMachIndex = -1
-resEntities.cn = []
-resEntities.cm = []
-resEntities.ca = []
-resEntities.cy = []
-resEntities.cln = []
-resEntities.cll = []
-
-resEntities.cl = []
-resEntities.cd = []
-resEntities.cl_cd = []
-resEntities.x_cp = []
-
+let isProcessCalculatedResultFinish = false
 let isNeedUpdateAlpha = true
+
+function initResEntities(){
+  resEntities.alpha = []
+  resEntities.mach = []
+  resEntities.currentMachIndex = -1
+  resEntities.cn = []
+  resEntities.cm = []
+  resEntities.ca = []
+  resEntities.cy = []
+  resEntities.cln = []
+  resEntities.cll = []
+
+  resEntities.cl = []
+  resEntities.cd = []
+  resEntities.cl_cd = []
+  resEntities.x_cp = []
+}
 
 exports.processFileResult = function processFileResult(fileResult) {
   parseCalculationResult(fileResult)
+  return getResultEntity()
 }
 
 function parseCalculationResult(fileResult) {
+  //clear result object
+  initResEntities()
+
   let dataArray = fileResult.split(/\r?\n/)
   console.log('line num:' + dataArray.length)
   let inputNumPattern = /NALPHA=(\d+\.?\d*),.*NMACH=(\d+\.?\d*)/
@@ -75,13 +80,9 @@ function parseCalculationResult(fileResult) {
     }
   })
 
-  // console.log('alpha:')
-  // console.log(resEntities.alpha.toString())
-  // console.log('mach')
-  // console.log(resEntities.mach.toString())
-  // console.log('data:cl:')
-  // console.log(resEntities.cl[0])
-  // console.log(resEntities.cl[1])
+  // Finish parse data, so set these flag to init status
+  isProcessCalculatedResultFinish = true
+  isNeedUpdateAlpha = true
 }
 
 function initForNewRow() {
@@ -91,8 +92,7 @@ function initForNewRow() {
   resEntities.ca[resEntities.currentMachIndex] = []
   resEntities.cy[resEntities.currentMachIndex] = []
   resEntities.cln[resEntities.currentMachIndex] = []
-  resEntities.cll [resEntities.currentMachIndex] = []
-
+  resEntities.cll[resEntities.currentMachIndex] = []
 
   // second section
   resEntities.cl[resEntities.currentMachIndex] = []
@@ -110,7 +110,7 @@ function setFirstSectionData(lineDataArray) {
   resEntities.ca[resEntities.currentMachIndex].push(lineDataArray[3])
   resEntities.cy[resEntities.currentMachIndex].push(lineDataArray[4])
   resEntities.cln[resEntities.currentMachIndex].push(lineDataArray[5])
-  resEntities.cll [resEntities.currentMachIndex].push(lineDataArray[6])
+  resEntities.cll[resEntities.currentMachIndex].push(lineDataArray[6])
 }
 
 function setSecondSectionData(lineDataArray) {
@@ -123,5 +123,12 @@ function setSecondSectionData(lineDataArray) {
 function setResultEntity(dataArray) {
 
 
+}
+
+function getResultEntity(){
+  if(isProcessCalculatedResultFinish) {
+    return resEntities
+  }
+  return null
 }
 

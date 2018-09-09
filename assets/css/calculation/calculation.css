@@ -8,13 +8,12 @@
     padding: .4em 1.2em;
     color: inherit;
     background-color: transparent;
-    float:right;
+    float: right;
 }
 
-.clear-both{
+.clear-both {
     clear: both;
 }
-
 
 .footer-wrapper {
     position: relative;
@@ -22,4 +21,11 @@
     margin: 0 auto 5rem auto;
     padding: 2rem;
     border-top: 1px solid var(--color-border);
+}
+
+.table-show-result-table {
+    color: #666666;
+    border: 1px solid #FF9999;
+    border-collapse: collapse;
+    border-spacing: 0;
 }

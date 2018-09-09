@@ -16,7 +16,11 @@ exports.readFile = function readFile(path) {
   console.log('path:' + path)
   let dataContent = fileProcessor.readFileSync(path)
   //console.log('dataContent:' + dataContent )
-  calculation.processFileResult(dataContent)
+  let resEntities = calculation.processFileResult(dataContent)
+  if(resEntities !== null) {
+    return resEntities
+  }
+  //console.log('readFile resEntities:' + resEntities.cl[0])
 }
 
 
