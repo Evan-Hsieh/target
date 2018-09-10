@@ -53,7 +53,7 @@ function clickVisualize() {
   // dataNameList.forEach(function (name, index, array) {
   //   showDataChart(name)
   // })
-  showDataChart()
+  showDataChart('cn')
 }
 
 function calculate() {
@@ -107,27 +107,60 @@ function showDataTable(resultParaName) {
   document.getElementById('show-result-wrapper').insertAdjacentHTML('beforeend', tableContent)
 }
 
-function showDataChart() {
-
-
-// 基于准备好的dom，初始化echarts实例
-  var myChart = charts.init(document.getElementById('div-show-data-chart'));
-
+function showDataChart(name) {
   console.log('showDataChart')
-// 绘制图表
-  myChart.setOption({
+  let dataId = 'div-id-show-' + name + '-chart'
+  let chartDiv = '<div id=\"' + dataId + '\" class=\"div-class-show-data-chart\"></div>'
+
+  document.getElementById('div-wrapper-show-data-chart').insertAdjacentHTML('beforeend', chartDiv)
+
+
+  let myChart = charts.init(document.getElementById(dataId))
+  let legendArray = []
+  let seriesArray = []
+
+  resEntities.mach.forEach(function (item, index, array) {
+    let legendItem = item + '马赫'
+    legendArray.push(legendItem)
+    seriesArray.push({
+      name: legendItem,
+      type: 'line',
+      stack: '总量',
+      data: resEntities[name][index]
+    })
+  })
+
+  let option = {
     title: {
-      text: 'ECharts 入门示例'
+      text: name + '结果图像'
     },
-    tooltip: {},
+    tooltip: {
+      trigger: 'axis'
+    },
+    legend: {
+      data: legendArray
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    toolbox: {
+      feature: {
+        saveAsImage: {}
+      }
+    },
     xAxis: {
-      data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+      type: 'category',
+      boundaryGap: false,
+      data: resEntities.alpha
     },
-    yAxis: {},
-    series: [{
-      name: '销量',
-      type: 'bar',
-      data: [5, 20, 36, 10, 10, 20]
-    }]
-  });
+    yAxis: {
+      type: 'value'
+    },
+    series: seriesArray
+  }
+
+  myChart.setOption(option)
 }

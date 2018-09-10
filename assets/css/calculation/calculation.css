@@ -35,3 +35,7 @@
     border: 1px solid #000;
     border-collapse: collapse;
 }
+
+.div-class-show-data-chart {
+    height: 400px;
+}
