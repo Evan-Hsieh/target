@@ -2,18 +2,30 @@ const remote = require('electron').remote
 const controller = remote.require('./src/main/controllers/controller')
 const path = require('path')
 const BASE_PATH = path.join(__dirname, '/../../../')
+const charts = require('echarts')
 
 let resEntities
+let dataNameList = []
+let isInitDataNameList = false
 
 document.getElementById('button-calculate-model').addEventListener('click', function (event) {
   console.log('click calculation button')
+  initDataNameList()
   clickCalcultion()
 })
 document.getElementById('button-draw-result').addEventListener('click', function (event) {
   console.log('click draw button')
+  initDataNameList()
   clickVisualize()
 })
 
+
+function initDataNameList() {
+  if (!isInitDataNameList) {
+    dataNameList.push('cn', 'cm', 'ca', 'cy', 'cl', 'cd')
+  }
+  isInitDataNameList = true
+}
 
 function clickCalcultion() {
   // let inputFilePath = BASE_PATH + 'bin/t.txt'
@@ -24,22 +36,28 @@ function clickCalcultion() {
   readData(outputFilePath)
 
   document.getElementById('show-result-wrapper').innerHTML = ''
-  showDataTable('cn')
-  showDataTable('cm')
-  showDataTable('ca')
-  showDataTable('cy')
-  showDataTable('cl')
-  showDataTable('cd')
-}
-
-function calculate() {
-  // call tool.exe
+  dataNameList.forEach(function (name, index, array) {
+    showDataTable(name)
+  })
 }
 
 function clickVisualize() {
   console.log('calculation-presenter: clickVisualize')
-  let outputFilePath = BASE_PATH + 'bin/for006.dat'
-  readData(outputFilePath)
+  // check if the data ready
+  if (resEntities == null) {
+    console.log('the data is not ready, so read it first')
+    let outputFilePath = BASE_PATH + 'bin/for006.dat'
+    readData(outputFilePath)
+  }
+
+  // dataNameList.forEach(function (name, index, array) {
+  //   showDataChart(name)
+  // })
+  showDataChart()
+}
+
+function calculate() {
+  // call tool.exe
 }
 
 function readData(path) {
@@ -86,5 +104,30 @@ function showDataTable(resultParaName) {
   }
   tableContent += '</table>'
 
-  document.getElementById('show-result-wrapper').insertAdjacentHTML('beforeend',tableContent)
+  document.getElementById('show-result-wrapper').insertAdjacentHTML('beforeend', tableContent)
+}
+
+function showDataChart() {
+
+
+// 基于准备好的dom，初始化echarts实例
+  var myChart = charts.init(document.getElementById('div-show-data-chart'));
+
+  console.log('showDataChart')
+// 绘制图表
+  myChart.setOption({
+    title: {
+      text: 'ECharts 入门示例'
+    },
+    tooltip: {},
+    xAxis: {
+      data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+    },
+    yAxis: {},
+    series: [{
+      name: '销量',
+      type: 'bar',
+      data: [5, 20, 36, 10, 10, 20]
+    }]
+  });
 }
