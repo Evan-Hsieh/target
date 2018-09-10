@@ -3,7 +3,7 @@ const controller = remote.require('./src/main/controllers/controller')
 const path = require('path')
 const BASE_PATH = path.join(__dirname, '/../../../')
 
-let resEntities = []
+let resEntities
 
 document.getElementById('button-calculate-model').addEventListener('click', function (event) {
   console.log('click calculation button')
@@ -25,11 +25,11 @@ function clickCalcultion() {
 
   document.getElementById('show-result-wrapper').innerHTML = ''
   showDataTable('cn')
-  // showDataTable('cm')
-  // showDataTable('ca')
-  // showDataTable('cy')
-  // showDataTable('cl')
-  // showDataTable('cd')
+  showDataTable('cm')
+  showDataTable('ca')
+  showDataTable('cy')
+  showDataTable('cl')
+  showDataTable('cd')
 }
 
 function calculate() {
@@ -37,7 +37,7 @@ function calculate() {
 }
 
 function clickVisualize() {
-  console.log('calculation-presenter:' + 'vasualize')
+  console.log('calculation-presenter: clickVisualize')
   let outputFilePath = BASE_PATH + 'bin/for006.dat'
   readData(outputFilePath)
 }
