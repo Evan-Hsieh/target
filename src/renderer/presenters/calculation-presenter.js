@@ -50,10 +50,10 @@ function clickVisualize() {
     readData(outputFilePath)
   }
 
-  // dataNameList.forEach(function (name, index, array) {
-  //   showDataChart(name)
-  // })
-  showDataChart('cn')
+  dataNameList.forEach(function (name, index, array) {
+    showDataChart(name)
+  })
+  //showDataChart('cn')
 }
 
 function calculate() {
