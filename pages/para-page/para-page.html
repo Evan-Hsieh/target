@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="../../assets/css/para/set-para.css">
   <link rel="stylesheet" href="../../assets/css/para/check-para.css">
 
+  <link rel="stylesheet" href="../../assets/css/calculation/calculation.css">
+
 
   <link rel="import" href="../about.html">
   <link rel="import" href="set-body-para.html">
@@ -23,6 +25,10 @@
   <link rel="import" href="set-fly-condition-para.html">
   <link rel="import" href="set-reference-value-para.html">
   <link rel="import" href="check-para.html">
+
+
+  <link rel="import" href="../calculation-page/calc-model.html">
+  <link rel="import" href="../calculation-page/visualize-result.html">
 
   <link rel="import" href="../system/app-sys-information.html">
   <link rel="import" href="../system/clipboard.html">
@@ -59,15 +65,37 @@
 
     </div>
 
+
+    <div class="nav-item u-category-windows">
+      <h1 class="nav-category">
+        <svg class="nav-icon"><use xlink:href="../../assets/img/icons.svg#icon-menu"></use></svg>
+        模型模拟计算
+      </h1>
+      <button type="button" id="button-calc-model" data-section="calc-model" class="nav-button">模型计算</button>
+    </div>
+
+
+    <div class="nav-item u-category-windows">
+      <h1 class="nav-category">
+        <svg class="nav-icon"><use xlink:href="../../assets/img/icons.svg#icon-menu"></use></svg>
+        计算结果可视化
+      </h1>
+      <button type="button" id="button-visualize-result" data-section="visualize-result" class="nav-button">绘制结果图像</button>
+    </div>
+
   </nav>
 
-  <main class="content js-content"></main>
+  <main class="content js-content">
+
+    <div id="tempDiv"></div>
+  </main>
 
   <script>
     require('../../src/renderer/imports')
     require('../../src/renderer/ex-links')
     require('../../src/renderer/nav')
     require('../../src/renderer/data/data-manager')
+    require('../../src/renderer/presenters/calculation-presenter')
   </script>
 </body>
 </html>
