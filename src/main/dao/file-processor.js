@@ -1,3 +1,4 @@
+const exec = require('child_process').execFile;
 const fs = require('fs')
 const controller = require('../controllers/controller')
 
@@ -60,3 +61,15 @@ exports.unlink = function (filePath) {
     }
   })
 }
+
+exports.execFile = function(filePath){
+  console.log("execFile() start")
+  exec(filePath, (error, stdout, stderr) => {
+      if (error) {
+        throw error
+      }
+      console.log(stdout)
+    }
+  )
+}
+
