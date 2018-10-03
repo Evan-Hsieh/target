@@ -274,18 +274,18 @@ if (process.platform === 'win32') {
   addUpdateMenuItems(helpMenu, 0)
 }
 
-app.on('ready', function () {
-  console.log('menu')
-  const menu = Menu.buildFromTemplate(template)
-  Menu.setApplicationMenu(menu)
-})
-
-app.on('browser-window-created', function () {
-  let reopenMenuItem = findReopenMenuItem()
-  if (reopenMenuItem) reopenMenuItem.enabled = false
-})
-
-app.on('window-all-closed', function () {
-  let reopenMenuItem = findReopenMenuItem()
-  if (reopenMenuItem) reopenMenuItem.enabled = true
-})
+// app.on('ready', function () {
+//   console.log('menu')
+//   const menu = Menu.buildFromTemplate(template)
+//   Menu.setApplicationMenu(menu)
+// })
+//
+// app.on('browser-window-created', function () {
+//   let reopenMenuItem = findReopenMenuItem()
+//   if (reopenMenuItem) reopenMenuItem.enabled = false
+// })
+//
+// app.on('window-all-closed', function () {
+//   let reopenMenuItem = findReopenMenuItem()
+//   if (reopenMenuItem) reopenMenuItem.enabled = true
+// })
