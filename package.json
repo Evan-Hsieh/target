@@ -1,7 +1,7 @@
 {
   "name": "target",
   "productName": "导弹专家系统",
-  "version": "0.0.4",
+  "version": "0.0.7",
   "description": "Calculation System",
   "private": true,
   "main": "main.js",
@@ -32,7 +32,6 @@
   },
   "dependencies": {
     "echarts": "^4.1.0",
-    "electron-settings": "^3.0.7",
     "glob": "^7.1.0",
     "npm": "^6.4.1"
   },
