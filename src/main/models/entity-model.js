@@ -21,6 +21,25 @@ const angleFrontEdge = 'angle-front-edge'
 exports.angleFrontEdge = angleFrontEdge
 const angleRearEdge = 'angle-rear-edge'
 exports.angleRearEdge = angleRearEdge
+const numGroupWings = 'num-group-wings'
+exports.numGroupWings = numGroupWings
+const fsValueRef = 'fs-value-ref'
+exports.fsValueRef = fsValueRef
+const posWings = 'pos-wings'
+exports.posWings = posWings
+const layoutAngleWings = 'layout-angle-wings'
+exports.layoutAngleWings = layoutAngleWings
+const machFlight = 'mach-flight'
+exports.machFlight = machFlight
+const angleFlight = 'angle-flight'
+exports.angleFlight = angleFlight
+const typeWingsProfile = 'type-wings-profile'
+exports.typeWingsProfile = typeWingsProfile
+const typeWarhead = 'type-warhead'
+exports.typeWarhead = typeWarhead
+const typeStern = 'type-stern'
+exports.typeStern = typeStern
+
 
 let missileModel = new Map()
 //exports.missileModel = missileModel
@@ -49,7 +68,7 @@ exports.setMissileModel = function (mModel) {
 
 let predefineModel = [
   {
-    'para-item-id': 'type-warhead',
+    'para-item-id': typeWarhead,
     'para-item-name': '头部曲线类型',
     'para-item-value': 'undefined',
     'para-item-units': 'undefined',
@@ -84,7 +103,7 @@ let predefineModel = [
     'para-item-remarks': 'undefined'
   },
   {
-    'para-item-id': 'type-stern',
+    'para-item-id': typeStern,
     'para-item-name': '收缩尾部类型',
     'para-item-value': 'undefined',
     'para-item-units': 'undefined',
@@ -112,21 +131,21 @@ let predefineModel = [
     'para-item-remarks': 'undefined'
   },
   {
-    'para-item-id': 'num-group-wings',
+    'para-item-id': numGroupWings,
     'para-item-name': '弹翼组数',
     'para-item-value': 'undefined',
     'para-item-units': '组',
     'para-item-remarks': 'undefined'
   },
   {
-    'para-item-id': 'pos-wings',
+    'para-item-id': posWings,
     'para-item-name': '弹翼位置',
     'para-item-value': 'undefined',
     'para-item-units': '米',
     'para-item-remarks': 'undefined'
   },
   {
-    'para-item-id': 'layout-angle-wings',
+    'para-item-id': layoutAngleWings,
     'para-item-name': '布局(周向角度)',
     'para-item-value': 'undefined',
     'para-item-units': '角度',
@@ -189,7 +208,7 @@ let predefineModel = [
     'para-item-remarks': 'undefined'
   },
   {
-    'para-item-id': 'type-wings-profile',
+    'para-item-id': typeWingsProfile,
     'para-item-name': '弹翼剖面类型',
     'para-item-value': 'undefined',
     'para-item-units': 'undefined',
@@ -203,14 +222,14 @@ let predefineModel = [
     'para-item-remarks': 'undefined'
   },
   {
-    'para-item-id': 'mach-flight',
+    'para-item-id': machFlight,
     'para-item-name': '飞行马赫数',
     'para-item-value': 'undefined',
     'para-item-units': '马赫',
     'para-item-remarks': 'undefined'
   },
   {
-    'para-item-id': 'angle-flight',
+    'para-item-id': angleFlight,
     'para-item-name': '攻角',
     'para-item-value': 'undefined',
     'para-item-units': '角度',
@@ -238,7 +257,7 @@ let predefineModel = [
     'para-item-remarks': 'undefined'
   },
   {
-    'para-item-id': 'fs-value-ref',
+    'para-item-id': fsValueRef,
     'para-item-name': 'fs值',
     'para-item-value': 'undefined',
     'para-item-units': 'undefined',

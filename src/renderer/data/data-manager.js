@@ -1,5 +1,7 @@
 const remote = require('electron').remote
+const {dialog} = require('electron').remote
 const entityModel = remote.require('./src/main/models/entity-model')
+const utils = require('../../shared/utils')
 const submitButtons = document.querySelectorAll('.submit-button')
 const checkParaTable = document.getElementById('check-para-table')
 let pModel = entityModel.getPredefineModel()
@@ -63,28 +65,35 @@ Array.prototype.forEach.call(submitButtons, function (submitBtn) {
 function collectData(sectionId) {
   let selectElement = '#' + sectionId + ' .input-para'
   let inputFrames = document.querySelectorAll(selectElement)
-  Array.prototype.forEach.call(inputFrames, function (inputFrame) {
+  for (let inputFrame of inputFrames) {
     let inputFrameId = inputFrame.id
     // Get the parameter name from the id of input frame.
     // Because the id has the prefix 'input-', the substring begin at index 6
     let paraName = inputFrameId.substr(6)
-    entityModel.setMissileModelValue(paraName, removeLastComma(inputFrame.value))
+    let inputValue = removeLastComma(inputFrame.value)
+    //check input
+    if (!checkInput(paraName, inputValue)) {
+      console.log('The input is invalidated')
+      return
+    }
+    //set input
+    entityModel.setMissileModelValue(paraName, inputValue)
 
     // Set the table value of check-para page
     let trTableId = 'tr-' + paraName
     if (paraName === (entityModel.sweepBack)) {
-      let inputSweepBackType = document.querySelector('#'+ entityModel.inputTag + entityModel.sweepBackType)
+      let inputSweepBackType = document.querySelector('#' + entityModel.inputTag + entityModel.sweepBackType)
       if (inputSweepBackType.value === '0.') {
         trTableId = 'tr-' + entityModel.angleFrontEdge
       } else {
         trTableId = 'tr-' + entityModel.angleRearEdge
       }
-      entityModel.setMissileModelValue(entityModel.sweepBackType,inputSweepBackType.value )
-      entityModel.setMissileModelValue(entityModel.sweepBack,inputFrame.value )
+      entityModel.setMissileModelValue(entityModel.sweepBackType, inputSweepBackType.value)
+      entityModel.setMissileModelValue(entityModel.sweepBack, inputValue)
     }
 
-    document.getElementById(trTableId).children[1].innerHTML = transferParaValueForShow(removeLastComma(inputFrame.value))
-  })
+    document.getElementById(trTableId).children[1].innerHTML = transferParaValueForShow(inputValue)
+  }
   //remote.require('./src/main/models/entity-model').setMissileModel(mMissileModel)
   //remote.setMainMissileModel(mMissileModel)
 }
@@ -111,6 +120,30 @@ function transferParaValueForShow(value) {
       return value
   }
 
+}
+
+function checkInput(paraName, inputValue) {
+  if (paraName === entityModel.fsValueRef || paraName === entityModel.numGroupWings || paraName === entityModel.typeWingsProfile
+    || paraName === entityModel.typeWarhead || paraName === entityModel.typeStern) {
+    return true
+  }
+  if (utils.testSpaceLine(inputValue)) {
+    dialog.showErrorBox('输入参数异常', '输入参数为空。')
+    return false
+  } else if (paraName === entityModel.machFlight || paraName === entityModel.angleFlight || paraName === entityModel.posWings || paraName === entityModel.layoutAngleWings) {
+    if (!utils.testNumberArray(inputValue)) {
+      console.log(paraName + '数组异常值：' + inputValue)
+      dialog.showErrorBox('输入参数异常', '输入参数格式不正确，输入参数为整数或小数，部分参数如：弹翼位置、布局、马赫数与攻角支持输入数组，每个数以英文逗号作为分隔。')
+      return false
+    }
+  } else {
+    if (!utils.testNumber(inputValue)) {
+      console.log(paraName + '数字异常值：' + inputValue)
+      dialog.showErrorBox('输入参数异常', '输入参数格式不正确，输入参数为整数或小数，部分参数如：弹翼位置、布局、马赫数与攻角支持输入数组，每个数以英文逗号作为分隔。')
+      return false
+    }
+  }
+  return true
 }
 
 
