@@ -68,13 +68,14 @@ function handleSectionTrigger (event) {
   event.target.classList.add('is-selected')
 
   // Display the current section
+  console.log('nav: handleSectionTrigger(). ' + event.target.dataset.section)
   const sectionId = event.target.dataset.section + '-section'
   document.getElementById(sectionId).classList.add('is-shown')
 
   // Save currently active button in localStorage
   const buttonId = event.target.getAttribute('id')
   console.log('button click:' + buttonId)
-  settings.set('activeSectionButtonId', buttonId)
+  //settings.set('activeSectionButtonId', buttonId)
 }
 
 // Default section that will be open
@@ -88,6 +89,7 @@ function showMainContent () {
 }
 
 function handleModalTrigger (event) {
+  console.log('nav: handleSectionTrigger(). ' + event.target.dataset.modal)
   hideAllModals()
   const modalId = event.target.dataset.modal + '-modal'
   document.getElementById(modalId).classList.add('is-shown')

@@ -48,18 +48,21 @@ exports.appendFileSync = function (filePath, data) {
   }
 }
 
-exports.unlink = function (filePath) {
+exports.unlinkSync = function (filePath) {
   console.log('file-processor: unlink.' + filePath)
-  fs.unlink(filePath, (err) => {
-    if (err) {
-      console.log(err)
-      return false
-    } else {
-      console.log('unlink ' + filePath + ' successfully')
-      controller.appendDefaultData(filePath)
-      return true
-    }
-  })
+  if(fs.existsSync(filePath)){
+    fs.unlinkSync(filePath)
+  }
+  // fs.unlink(filePath, (err) => {
+  //   if (err) {
+  //     console.log(err)
+  //     return false
+  //   } else {
+  //     console.log('unlink ' + filePath + ' successfully')
+  //     controller.appendDefaultData(filePath)
+  //     return true
+  //   }
+  // })
 }
 
 exports.execFile = function(filePath){

@@ -24,14 +24,9 @@ exports.readFile = function readFile(path) {
 }
 
 
-exports.writeDefaultData = function writeDefaultData(path) {
-  console.log('controller: writeDefaultData()')
-  // Delete the file, if success, then append data
-  fileProcessor.unlink(path)
-}
 
 
-exports.appendDefaultData = function appendDefaultData(path) {
+function appendDefaultData(path) {
   console.log('controller: appendDefaultData()')
   fileProcessor.appendFileSync(path, processFltconData(fltcon))
   fileProcessor.appendFileSync(path, '\n' + processRefValue(refq))
@@ -40,11 +35,25 @@ exports.appendDefaultData = function appendDefaultData(path) {
   fileProcessor.appendFileSync(path, '\n' + other)
 }
 
+exports.writeDefaultData = function writeDefaultData(path) {
+  console.log('controller: writeDefaultData()')
+  // Delete the file, if success, then append data
+  fileProcessor.unlinkSync(path)
+  console.log('unlink successfully')
+  appendDefaultData(path)
+}
+
 
 exports.writeCustomData = function writeCustomData(path, data) {
   console.log('controller: writeCustomData.')
   fileProcessor.writeFile(path, data)
 }
+
+exports.execFile = function execFile(filePath) {
+  console.log('controller: execFile(). The filePath:' + filePath)
+  fileProcessor.execFile(filePath)
+}
+
 
 function setParaValue(vector, paraValue) {
   return vector.replace('%%', paraValue)

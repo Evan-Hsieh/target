@@ -3,6 +3,11 @@ const controller = remote.require('./src/main/controllers/controller')
 const path = require('path')
 const BASE_PATH = path.join(__dirname, '/../../../')
 const charts = require('echarts')
+const fs = require('fs')
+
+let inputFilePath = BASE_PATH + 'bin/for005.dat'
+let outputFilePath = BASE_PATH + 'bin/for006.dat'
+let exeFilePath = BASE_PATH + 'bin/misdat.exe'
 
 let resEntities
 let dataNameList = []
@@ -12,6 +17,11 @@ document.getElementById('button-calculate-model').addEventListener('click', func
   console.log('click calculation button')
   initDataNameList()
   clickCalcultion()
+})
+document.getElementById('button-show-calculated-result').addEventListener('click', function (event) {
+  console.log('click show-calculated-result button')
+  initDataNameList()
+  clickShowClaculatedResult()
 })
 document.getElementById('button-draw-result').addEventListener('click', function (event) {
   console.log('click draw button')
@@ -27,27 +37,35 @@ function initDataNameList() {
   isInitDataNameList = true
 }
 
+function prepareCalculate(){
+
+}
+
 function clickCalcultion() {
-  // let inputFilePath = BASE_PATH + 'bin/t.txt'
-  // writeData(inputFilePath)
-  // calculate()
+  console.log('calculation presenter: clickCalcultion')
+  writeData(inputFilePath)
+  calculate(exeFilePath)
+}
 
-  let outputFilePath = BASE_PATH + 'bin/for006.dat'
+function clickShowClaculatedResult() {
+  console.log('calculation presenter: clickShowClaculatedResult')
   readData(outputFilePath)
-
   document.getElementById('show-result-wrapper').innerHTML = ''
   dataNameList.forEach(function (name, index, array) {
     showDataTable(name)
   })
 }
 
+
 function clickVisualize() {
   console.log('calculation-presenter: clickVisualize')
   // check if the data ready
-  if (resEntities == null) {
+  if (resEntities === null) {
     console.log('the data is not ready, so read it first')
-    let outputFilePath = BASE_PATH + 'bin/for006.dat'
-    readData(outputFilePath)
+
+    if(fs.existsSync(outputFilePath)){
+      readData(outputFilePath)
+    }
   }
 
   dataNameList.forEach(function (name, index, array) {
@@ -56,8 +74,13 @@ function clickVisualize() {
   //showDataChart('cn')
 }
 
-function calculate() {
+function calculate(exeFilePath) {
   // call tool.exe
+  if(!fs.existsSync(exeFilePath)){
+    console.log('calculation presenter: calculate(). This file doest exist')
+    return
+  }
+  controller.execFile(exeFilePath)
 }
 
 function readData(path) {
