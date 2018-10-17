@@ -5,9 +5,9 @@ const BASE_PATH = path.join(__dirname, '/../../../')
 const charts = require('echarts')
 const fs = require('fs')
 
-let inputFilePath = BASE_PATH + 'bin/for005.dat'
-let outputFilePath = BASE_PATH + 'bin/for006.dat'
-let exeFilePath = BASE_PATH + 'bin/misdat.exe'
+let inputFilePath = path.join(BASE_PATH,'bin','for005.dat')
+let outputFilePath = path.join(BASE_PATH,'bin','for006.dat')
+let exeFilePath = path.join(BASE_PATH,'bin','misdat.exe')
 
 let resEntities
 let dataNameList = []

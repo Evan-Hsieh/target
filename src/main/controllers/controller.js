@@ -5,11 +5,11 @@ const entityModel = require('../models/entity-model')
 const calculation = require('../calculation/calculation')
 
 
-let fltcon = '$FLTCON ALT=%%,NALPHA=%%,ALPHA=%%,NMACH=%%,MACH=%%,$'
+let fltcon = '$FLTCON NALPHA=%%,ALPHA=%%,NMACH=%%,MACH=%%,\n        ALT=%%,REN=%%,$'
 let refq = '$REFQ XCG=%%,LREF=%%,SREF=%%,$'
-let body = '$AXIBOD TNOSE=%%,LNOSE=%%,DNOSE=%%,LCENTER=%%,DCENTER=%%,TAFT=%%,LAFT=%%,DAFT=%%,DEXIT=%%,$'
-let wing = '$FINSET%% SECTYP=%%,XLE=%%,NPANEL=%%,PHIF=%%,STA=%%,SWEEP=%%,CHORD=%%,SSPAN=%%,$'
-let other = 'DIM M\nDERIV DEG\nPLOT\nDAMP'
+let body = '$AXIBOD TNOSE=%%,LNOSE=%%,DNOSE=%%,\n        LCENTR=%%,DCENTR=%%,TAFT=%%,\n        LAFT=%%,DAFT=%%,DEXIT=%%,$'
+let wing = '$FINSET%% SECTYP=%%,XLE=%%,NPANEL=%%,PHIF=%%,\n        STA=%%,SWEEP=%%,CHORD=%%,SSPAN=%%,$'
+let other = 'DIM M\nDERIV DEG\nPLOT\nDAMP\nNEXT CASE'
 
 exports.readFile = function readFile(path) {
   console.log('controller: readFile.')
@@ -22,7 +22,6 @@ exports.readFile = function readFile(path) {
   }
   //console.log('readFile resEntities:' + resEntities.cl[0])
 }
-
 
 
 
@@ -74,15 +73,18 @@ function getParaArrayLength(paraName) {
 
 
 function processFltconData(input) {
-  console.log('controller: processFltconData.')
+  console.log('controller: processFltconData1.')
   let res = input
-  res = setParaValue(res, entityModel.getMissileModelValue('height-flight'))
   res = setParaValue(res, getParaArrayLength('mach-flight'))
   res = setParaValue(res, entityModel.getMissileModelValue('mach-flight'))
   res = setParaValue(res, getParaArrayLength('angle-flight'))
   res = setParaValue(res, entityModel.getMissileModelValue('angle-flight'))
+
+  res = setParaValue(res, entityModel.getMissileModelValue('height-flight'))
+  res = setParaValue(res, '3000000.')
   return res
 }
+
 
 function processBodyPara(input) {
   console.log('controller: processBodyPara.')
