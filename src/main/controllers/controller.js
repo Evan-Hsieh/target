@@ -5,7 +5,7 @@ const entityModel = require('../models/entity-model')
 const calculation = require('../calculation/calculation')
 
 
-let fltcon = '$FLTCON NALPHA=%%,ALPHA=%%,NMACH=%%,MACH=%%,\n        ALT=%%,REN=%%,$'
+let fltcon = '$FLTCON NMACH=%%,MACH=%%,NALPHA=%%,ALPHA=%%,\n        ALT=%%,REN=%%,$'
 let refq = '$REFQ XCG=%%,LREF=%%,SREF=%%,$'
 let body = '$AXIBOD TNOSE=%%,LNOSE=%%,DNOSE=%%,\n        LCENTR=%%,DCENTR=%%,TAFT=%%,\n        LAFT=%%,DAFT=%%,DEXIT=%%,$'
 let wing = '$FINSET%% SECTYP=%%,XLE=%%,NPANEL=%%,PHIF=%%,\n        STA=%%,SWEEP=%%,CHORD=%%,SSPAN=%%,$'
