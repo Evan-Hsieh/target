@@ -75,9 +75,9 @@ function getParaArrayLength(paraName) {
 function processFltconData(input) {
   console.log('controller: processFltconData1.')
   let res = input
-  res = setParaValue(res, getParaArrayLength('mach-flight'))
+  res = setParaValue(res, getParaArrayLength('mach-flight') + '.')
   res = setParaValue(res, entityModel.getMissileModelValue('mach-flight'))
-  res = setParaValue(res, getParaArrayLength('angle-flight'))
+  res = setParaValue(res, getParaArrayLength('angle-flight') + '.')
   res = setParaValue(res, entityModel.getMissileModelValue('angle-flight'))
 
   res = setParaValue(res, entityModel.getMissileModelValue('height-flight'))
@@ -140,7 +140,7 @@ function processWingPara(path, input) {
     if (layoutAngleWings.indexOf(',') !== -1) {
       numPanel = layoutAngleWings.split(',').length
     }
-    res = setParaValue(res, numPanel)
+    res = setParaValue(res, numPanel + '.')
     res = setParaValue(res, layoutAngleWings)
 
     res = setParaValue(res, entityModel.getMissileModelValue(entityModel.sweepBackType))
