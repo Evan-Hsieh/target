@@ -70,7 +70,7 @@ function collectData(sectionId) {
     // Get the parameter name from the id of input frame.
     // Because the id has the prefix 'input-', the substring begin at index 6
     let paraName = inputFrameId.substr(6)
-    let inputValue = removeLastComma(inputFrame.value)
+    let inputValue = addDotBeforeAllComma(removeLastComma(inputFrame.value))
     //check input
     if (!checkInput(paraName, inputValue)) {
       console.log('The input is invalidated')
@@ -103,6 +103,26 @@ function removeLastComma(inputStr) {
     inputStr = inputStr.substr(0, inputStr.length - 1)
   }
   return inputStr
+}
+
+function addLastComma(inputStr) {
+  if (inputStr.lastIndexOf(',') !== inputStr.length - 1) {
+    inputStr = inputStr + ','
+  }
+  return inputStr
+}
+
+function addDotBeforeAllComma(inputStr) {
+  //console.log('inputStr: ' + inputStr)
+  let inputArray = inputStr.split(',')
+  for(let i=0;i<inputArray.length;i++){
+    let ele = inputArray[i]
+    if (ele.lastIndexOf('.') === -1) {
+      inputArray[i] = ele + '.'
+    }
+
+  }
+  return inputArray.join(',')
 }
 
 
