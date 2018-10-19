@@ -115,9 +115,11 @@ function addLastComma(inputStr) {
 function addDotBeforeAllComma(inputStr) {
   //console.log('inputStr: ' + inputStr)
   let inputArray = inputStr.split(',')
+  let numPattern = /^[0-9]+$/
+
   for(let i=0;i<inputArray.length;i++){
     let ele = inputArray[i]
-    if (ele.lastIndexOf('.') === -1) {
+    if (numPattern.test(ele)) {
       inputArray[i] = ele + '.'
     }
 
