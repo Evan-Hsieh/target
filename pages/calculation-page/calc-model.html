@@ -11,11 +11,9 @@
         </h1>
         <h3>在输入模型参数后，可选择相应的计算引擎对模型进行求解，并显示结果。</h3>
 
-        <p>选择XX引擎表示通过XX模型及其风动数据来进行求解；</p>
-        <p>选择内置引擎表示通过专家系统内置的定制化模型来求解。</p>
+        <p>选择DATCOM引擎表示通过DATCOM模型及其风动数据来进行求解；</p>
 
-        <label><input name="calc-engine" disabled="disabled" type="radio" value="inner-engine"/>内置引擎</label>
-        <label><input name="calc-engine" type="radio" value="outter-engine"/>外置引擎</label>
+        <label><input name="calc-engine" type="radio" value="outter-engine" checked/>DATCOM引擎</label>
         <button id="button-show-calculated-result" class="confirm-button">显示结果</button>
         <button id="button-calculate-model" class="confirm-button">开始计算</button>
         <div class="clear-both"></div>
