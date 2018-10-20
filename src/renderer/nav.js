@@ -1,5 +1,5 @@
 const electron = require('electron')
-//const settings = require('electron-settings')
+const settings = require('electron-settings')
 const defaultClickButtonIdList = [
   'button-set-body-para',
   'button-calc-models'
@@ -75,7 +75,7 @@ function handleSectionTrigger (event) {
   // Save currently active button in localStorage
   const buttonId = event.target.getAttribute('id')
   console.log('button click:' + buttonId)
-  //settings.set('activeSectionButtonId', buttonId)
+  settings.set('activeSectionButtonId', buttonId)
 }
 
 // Default section that will be open
@@ -125,14 +125,14 @@ function displayAbout () {
 // These scripts will be executed
 // when every html page use <script> to load this js file
 // ********************
-// // Default to the view that was active the last time the app was open
-// const buttonClicked = settings.get('activeSectionButtonId')
-// if (buttonClicked) {
-//   showMainContent()
-//   clickNavButton(buttonClicked)
-// } else {
+// Default to the view that was active the last time the app was open
+const buttonClicked = settings.get('activeSectionButtonId')
+if (buttonClicked) {
+  showMainContent()
+  clickNavButton(buttonClicked)
+} else {
   activateDefaultSection()
   //display about.html
   displayAbout()
-//}
+}
 
