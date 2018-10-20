@@ -63,6 +63,7 @@ Array.prototype.forEach.call(submitButtons, function (submitBtn) {
 
 // Collect data from the input of set-para page
 function collectData(sectionId) {
+  console.log('data-manager:' + sectionId)
   let selectElement = '#' + sectionId + ' .input-para'
   let inputFrames = document.querySelectorAll(selectElement)
   for (let inputFrame of inputFrames) {
@@ -96,6 +97,7 @@ function collectData(sectionId) {
   }
   //remote.require('./src/main/models/entity-model').setMissileModel(mMissileModel)
   //remote.setMainMissileModel(mMissileModel)
+  dialog.showMessageBox({type:'info',message:'该部分参数输入完毕。'})
 }
 
 function removeLastComma(inputStr) {
