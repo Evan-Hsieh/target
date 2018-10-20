@@ -48,9 +48,9 @@ exports.writeCustomData = function writeCustomData(path, data) {
   fileProcessor.writeFile(path, data)
 }
 
-exports.execFile = function execFile(filePath) {
+exports.execFile = function execFile(fileBasePath,filePath) {
   console.log('controller: execFile(). The filePath:' + filePath)
-  fileProcessor.execFile(filePath)
+  fileProcessor.execFile(fileBasePath,filePath)
 }
 
 

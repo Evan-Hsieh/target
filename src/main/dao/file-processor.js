@@ -65,9 +65,9 @@ exports.unlinkSync = function (filePath) {
   // })
 }
 
-exports.execFile = function(filePath){
+exports.execFile = function(baseFilePath,filePath){
   console.log("execFile() start")
-  exec(filePath, (error, stdout, stderr) => {
+  exec(filePath,{cwd:baseFilePath}, (error, stdout, stderr) => {
       if (error) {
         throw error
       }

@@ -7,6 +7,7 @@ const fs = require('fs')
 
 let inputFilePath = path.join(BASE_PATH,'bin','for005.dat')
 let outputFilePath = path.join(BASE_PATH,'bin','for006.dat')
+let exeFileBasePath =  path.join(BASE_PATH,'bin')
 let exeFilePath = path.join(BASE_PATH,'bin','misdat.exe')
 
 let resEntities
@@ -44,7 +45,7 @@ function prepareCalculate(){
 function clickCalcultion() {
   console.log('calculation presenter: clickCalcultion')
   writeData(inputFilePath)
-  calculate(exeFilePath)
+  calculate(exeFileBasePath,exeFilePath)
 }
 
 function clickShowClaculatedResult() {
@@ -74,13 +75,13 @@ function clickVisualize() {
   //showDataChart('cn')
 }
 
-function calculate(exeFilePath) {
+function calculate(exeFileBasePath,exeFilePath) {
   // call tool.exe
   if(!fs.existsSync(exeFilePath)){
     console.log('calculation presenter: calculate(). This file doest exist')
     return
   }
-  controller.execFile(exeFilePath)
+  controller.execFile(exeFileBasePath,exeFilePath)
 }
 
 function readData(path) {
